@@ -13,7 +13,7 @@ The members and respective role of Alpha team are:
 1) Ryan Guzelian : Team Leader
 2) Mansi Gairola
 3) Cristian Garcia
-4) Grecia Maria Olano O'Brien
+4) Grecia O.
 5) Ruawei Lin
 
 Technologies used for this project are:
