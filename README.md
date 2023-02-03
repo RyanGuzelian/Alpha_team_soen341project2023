@@ -17,7 +17,7 @@ The members and respective role of Alpha team are:
 5) Ruawei Lin : Team Member- frontend developer
 
 Additional role:
-1) Parthiv Akbari : Skateholder
+1) Parthiv Akbari : Stakeholder
 
 Technologies used for this project are:
 1) Node.js
