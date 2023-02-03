@@ -1,27 +1,35 @@
 ![](https://github.com/RyanGuzelian/Alpha_team_soen341project2023/blob/main/wiki/Banner%20-%201280%20%C3%97%20640.png)
-# HirED
+# HirED Overview
+HirED is a fullstack React.js application built using Node.js, Express.js and MongoDB.
 
-Objective:
-Develop a career services platform using Agile method
+## Objective
+Develop a career services platform using Agile method. 
 
-Description:
+## Description
+Through HirEd job seekers can create a profile and apply for jobs based on their preferred location, language and industry and, employers can upload/create job postings at our platform and find suitable applicants.
 
-Goal- To create an interactive career services platform where employers and job seekers interact.
+## Goal
+To create an interactive career services platform where employers and job seekers interact.
 
-We are developing a web site where job seekers can create a profile and apply for jobs based on their preferred location, language and industry and,  employers can upload/create job postings at our platform and find suitable applicants.
+## Roles
+- **Product Owner**: Parthiv Akbari
+- **Scrum Master**: Ryan Guzelian
+- **Front-End Developers**: Mansi Gairola & Ruawei Lin 
+- **Back-End Developers**: Cristian Garcia
+- **Full-Stack Developers**: Ryan Guzelian & Grecia Olano O'Brien
+- **Stakeholders**: TBD
 
-The members and respective role of Alpha team are:
-1) Ryan Guzelian : Scrum Master / full stack developer
-2) Mansi Gairola : Team Member- frontend developer
-3) Cristian Garcia : Team Member- backend developer
-4) Grecia Maria Olano O'Brien : Team Member- full stack developer
-5) Ruawei Lin : Team Member- frontend developer
+## Web App Stack
+Our tech stack choice was based on the team members' familiarity and knowledge with various existing technologies.
 
-Additional role:
-1) Parthiv Akbari : Stakeholder
-
-Technologies used for this project are:
 1) Node.js
 2) Express.js
 3) React
 4) VS Code
+
+## **Supporting Tools**
+Visual Studio Code (VSC)
+VSC is a streamlined code editor with extensive support for development operations such as debugging, task running, and version control.
+
+**Releases**
+TBD.
