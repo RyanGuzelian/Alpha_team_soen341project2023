@@ -1,3 +1,4 @@
+![](https://github.com/RyanGuzelian/Alpha_team_soen341project2023/blob/main/wiki/Banner%20-%201280%20%C3%97%20640.png)
 # HirED
 
 Objective:
