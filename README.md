@@ -32,3 +32,6 @@ Our tech stack choice was based on the team members' familiarity and knowledge w
 
 ## Releases
 TBD.
+
+## How to use locally
+Please run npm-i command to install necessary node modules for the frontend functions.
