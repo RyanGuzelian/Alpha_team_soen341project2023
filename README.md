@@ -15,7 +15,7 @@ HirED is designed to be an interactice and user-friendly platform. One of its ma
 - **Admin(s)**: Profile Management, Job Post Management
 
 ## Team Members and Roles
-- **Product Owner**: Parthiv Akbari | **Strengths**: Experience with agile methologies, product management expertise 
+- **Product Owner**: Parthiv Akbari | **Strengths**: Experience with agile methodologies, product management expertise 
 - **Scrum Master & Full-Stack Developer**: Ryan Guzelian, GitHub: RyanGuzelian | **Strengths**: Previous experience with ReactJS, NodeJS, and ExpressJS
 - **Front-End Developer**: Mansi Gairola, GitHub: MANSI288 | **Strengths**: Previous front-end development experience 
 - **Front-End Developer**: Ruawei Lin, GitHub: RoyLin0710 | **Strengths**: Previous front-end development experience 
