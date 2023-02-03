@@ -1,5 +1,5 @@
 ![](https://github.com/RyanGuzelian/Alpha_team_soen341project2023/blob/main/wiki/Banner%20-%201280%20%C3%97%20640.png)
-# HirED Overview
+# Overview
 HirED is a fullstack React.js application built using Node.js, Express.js and MongoDB.
 
 ## Objective
@@ -27,9 +27,8 @@ Our tech stack choice was based on the team members' familiarity and knowledge w
 3) React
 4) VS Code
 
-## **Supporting Tools**
-Visual Studio Code (VSC)
-VSC is a streamlined code editor with extensive support for development operations such as debugging, task running, and version control.
+## Supporting Tools
+**Visual Studio Code (VSC)**: a streamlined code editor with extensive support for development operations such as debugging, task running, and version control.
 
-**Releases**
+## Releases
 TBD.
