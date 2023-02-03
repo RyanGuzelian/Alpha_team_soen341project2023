@@ -14,8 +14,8 @@ HirED is designed to be an interactice and user-friendly platform. One of its ma
 - **Employer(s)**: Candidate Browsing, Job Posting, Application Reviewing, Interview Scheduling, Candidate Selection 
 - **Admin(s)**: Profile Management, Job Post Management
 
-## Roles
-- **Product Owner**: Parthiv Akbari | **Strengths**: Experience with agile methologies, product management expertise 
+## Team Members and Roles
+- **Product Owner**: Parthiv Akbari | **Strengths**: Experience with agile methodologies, product management expertise 
 - **Scrum Master & Full-Stack Developer**: Ryan Guzelian, GitHub: RyanGuzelian | **Strengths**: Previous experience with ReactJS, NodeJS, and ExpressJS
 - **Front-End Developer**: Mansi Gairola, GitHub: MANSI288 | **Strengths**: Previous front-end development experience 
 - **Front-End Developer**: Ruawei Lin, GitHub: RoyLin0710 | **Strengths**: Previous front-end development experience 
@@ -23,7 +23,10 @@ HirED is designed to be an interactice and user-friendly platform. One of its ma
 - **Full-Stack Developer**: Grecia Olano O'Brien, GitHub: golbr | **Strengths**: UI/UX knowledge, system analysis & design, skills, previous experience with web technologies 
 - **Stakeholders**: TBD
 
-## MERN Stack
+## Project Approach
+The team will adopt an agile methodologies to work quickly and collaboratively within the timeframe and budget of the project. Scrum is our team's agile methodology of choice. 
+
+## Technology: MERN Stack
 Stack selection was based on the team's familiarity and knowledge with the technologies that are part of this specific framework.
 
 ### MongoDB
