@@ -1,4 +1,4 @@
-# Alpha_team_soen341project2023
+# HirED
 
 Objective:
 Develop a career services platform using Agile method
