@@ -44,8 +44,5 @@ NodeJS is an open-source JavaScript runtime environment that allows users to run
 ## Supporting Tools
 **Visual Studio Code (VSC)**: a streamlined code editor with extensive support for development operations such as debugging, task running, and version control.
 
-## How to use locally
-Please run npm-i command to install necessary node modules for the frontend functions.
-
 ## Releases
-TBD.
+TBD
