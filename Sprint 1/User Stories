@@ -1,0 +1,52 @@
+User Story #1 (Issue #9)
+As an employer, I want to be able to chat with a pre-selected candidates because I need a quick and easy way to stay in touch with potential hires.
+Tasks:
+- Decide on what type of chatbot (online/offline)
+- Implement chat status
+
+User Story #2 (Issue #8)
+As a job seeker, I want to be able to share my experience with specific employers/organizations because I believe transparency will help improve the overall services offered by the platform.
+Tasks:
+- Add company rating
+- Store rating company ratings in database
+
+User Story #3 (Issue #7)
+As a job seeker, I want to browse through available postings in a certain area range because I want to find jobs close to my current/preferred location.
+Tasks:
+- Define filtering criteria
+- Implement dynamic filtering
+- Add pagination
+
+User Story #4 (Issue #6)
+As an employer, I want to be able to screen interested candidates by asking questions because I need to save time throughout the recruitment process.
+Tasks:
+- Add questionnaire
+
+User Story #5 (Issue #5)
+As a job seeker, I want to be able to filter through available positions because I have important preferences regarding the kind of jobs and organizations I would work for.
+Note: potential duplicate with User Story #3
+
+User Story #6 (Issue #4)
+As a job seeker, I want to apply to as many jobs as possible because I need to maximize my chances of securing a good employment opportunity.
+Tasks:
+- Add functionality to identify recently added opportunities
+
+User Story #7 (Issue #3)
+As an employer, I want to be able to post jobs to the platform because I am looking to fulfill specific roles within my organization.
+Tasks:
+- Design form 
+- Implement for with "basic" fields (job title, description, benefits, salary)
+
+User Story #8 (Issue #2)
+As a job seeker, I want to be able to upload my resume to the platform because I am hoping multiple employers will be able to see it.
+Tasks:
+- Implement criteria for acceptable file types
+- Store resume in job seeker's profile
+
+User Story #9 (Issue #1)
+As a user, I want to be able to create profile because I would like to have access to the platform's features.
+Tasks:
+- Create register page
+- Store user's information in database
+
+
