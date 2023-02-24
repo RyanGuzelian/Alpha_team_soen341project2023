@@ -11,7 +11,7 @@ stages:
     steps:
     - task: NodeTool@0
       inputs:
-        versionSpec: '10.x'
+        versionSpec: '6.x'
       displayName: 'Install Node.js'
     - task: CmdLine@2
       displayName: 'npm install and build'
