@@ -31,6 +31,7 @@
 	-npm --save-dev dotenv nodemon 	->This allow to constantly check the output of the saved file
 	-npm i ejs					->we add ejs dependencies (just for testing and visualizing the behaviour of the back-end)
 	-npm run [script name: devStart]	->we run the script to be checked by nodemon
+	-npm install --save express path handlebars express-handlebars @handlebars/allow-prototype-access body-parser       -> Express js dependencies for ease in use
 
 5) for a little of Front-end visualization and testing of the back-end we included the views folder which includes the ejs file and bootstrap
 
