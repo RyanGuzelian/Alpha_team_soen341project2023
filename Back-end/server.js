@@ -1,17 +1,31 @@
 require('dotenv').config()
 
+//  Express dependencies 
 const express = require('express')
+const path = require('path')
+const handlebars = require('handlebars')
+const exphbs = require('express-handlebars')
+const {allowInsecurePrototypeAccess}= require('@handlebars/allow-prototype-access')
+const bodyparser = require('body-parser')
+
+
 const app= express()
+const mongoose = require('mongoose')
+app.use(express.urlencoded({extended: false})) // Pass elements in the forms to the routes
+app.use(bodyparser.json())
+
+// Routes to different tabs
 const registerRouter = require('./routes/register')
 const registerLogin = require('./routes/login')
 const registerProfile = require('./routes/profile')
-const mongoose = require('mongoose')
 
-app.set('view engine', 'ejs')
 
-mongoose.connect('mongodb://localhost/HirED_DB')
+app.set('view engine', 'ejs') // declare that we are going to use EJS
 
-app.use(express.urlencoded({extended: false}))
+mongoose.connect('mongodb://127.0.0.1/HirED_DB') //CONNECT TO THE DATABASE AT LOCAL HOST: 127.0.0.1
+
+
+
 app.use('/register',registerRouter)
 app.use('/login',registerLogin)
 app.use('/Profile',registerProfile)
@@ -36,19 +50,6 @@ app.get('/',(req,res) => {
 
 app.listen(5000, () => console.log('server started'))
 
-// const mongoose = require('mongoose')
-
-// mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true})
-
-// const db=mongoose.connection
-
-// db.on('error',(error) => console.error(error))
-// db.once('open',() => console.log('connected to Database'))
-
-
-// app.use(express.json())
-
-// //const usersRouter = require('./routes/HirED')
 
 
 

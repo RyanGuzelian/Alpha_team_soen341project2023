@@ -1,4 +1,7 @@
-const mongoose = require('mongoose')
+var mongoose = require('mongoose');
+
+//mongoose.connect('mongodb://127.0.0.1/test')
+
 
 const Users_data = new mongoose.Schema({
     User_type:{
@@ -15,6 +18,10 @@ const Users_data = new mongoose.Schema({
     },
     posts:{
         type:String
+    },
+    date:{
+        type: Date,
+        default: Date.now
     }
 
 })
