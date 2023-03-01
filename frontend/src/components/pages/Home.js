@@ -6,7 +6,7 @@ import Header from '../navbar/Header'
 const Home = () => {
     return (
         <>
-            <Navbar />
+            {/* <Navbar /> */}
             <Header />
             <h1>Home page</h1>
         </>

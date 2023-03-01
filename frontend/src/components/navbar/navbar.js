@@ -13,13 +13,12 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import WorkIcon from '@mui/icons-material/Work';
 import { Link } from 'react-router-dom';
-import { useTheme } from '@emotion/react';
 
 const pages = ['Home', 'Log In'];
 
 
 function Navbar() {
-    const { palette } = useTheme();
+    //const { palette } = useTheme();
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -173,15 +172,15 @@ function Navbar() {
                         >
 
                             <MenuItem onClick={handleCloseUserMenu}>
-                                <Typography textAlign="center"><Link style={{ textDecoration: "none", color: palette.primary.main }} to="/admin/dashboard">Dashboard</Link></Typography>
+                                <Typography textAlign="center"><Link style={{ textDecoration: "none", color: "blue"}} to="/admin/dashboard">Dashboard</Link></Typography>
                             </MenuItem>
 
                             <MenuItem onClick={handleCloseUserMenu}>
-                                <Typography textAlign="center"><Link style={{ textDecoration: "none", color: palette.primary.main }} to="/login">Log In</Link></Typography>
+                                <Typography textAlign="center"><Link style={{ textDecoration: "none", color: "blue" }} to="/login">Log In</Link></Typography>
                             </MenuItem>
 
                             <MenuItem >
-                                <Typography style={{ textDecoration: "none", color: palette.primary.main }} textAlign="center">Log Out</Typography>
+                                <Typography style={{ textDecoration: "none", color: "blue"}} textAlign="center">Log Out</Typography>
                             </MenuItem>
 
                         </Menu>
