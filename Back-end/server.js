@@ -1,36 +1,38 @@
-const mongoose = require('mongoose')
-// require('dotenv').config({path:'./config.env'})
-const dotenv = require('dotenv')
 const express = require('express')
-
 const app= express()
+require('dotenv').config()
+const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
+var morgan = require('morgan') // api
 
-app.use(express.urlencoded({extended: false})) // Pass elements in the forms to the routes
+//IMPORT ROUTES
+const userRoutes = require('./routes/UsersRoutes')
 
-
+//CONNECT DATABASE
 //Atlas database otherwise:  mongoose.connect('mongodb://localhost/HirED_DB') for local DB
-// const DB = process.env.DATABASE.replace('<PASSWORD>',
-//     process.env.DATABASE_PASSWORD
-// )
-
-mongoose.connect('mongodb+srv://Alpha_team:SOEN341@hired.xuc7hrg.mongodb.net/Users?retryWrites=true&w=majority').then(con =>{
+mongoose.connect('mongodb+srv://Alpha_team:SOEN341@hired.xuc7hrg.mongodb.net/Users?retryWrites=true&w=majority',{
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+}).then(con =>{
     console.log(con.connections)
     console.log('DB connected')
 })
 
-// app.set('view engine', 'ejs') // declare that we are going to use EJS
+//ALLOW USE OF BODY PARSER
+// app.use(express.urlencoded({extended: false})) // Pass elements in the forms to the routes
 
-// app.get('/',(req,res))
-// {
-//     res.render('index',{text:'Hello World'})
-// }
+//MIDDLEWARE
+app.use(morgan('dev'))
+app.use(bodyParser.json())
 
-
-app.listen(5000, () => console.log('server started'))
-
-module.exports=app
+//ROUTES MIDDLEWARE
+app.use('/api',userRoutes)
 
 
+//set ejs environment (html alternative)
+app.set('view engine', 'ejs') // declare that we are going to use EJS
 
 
-
+//LISTEN on port 5000
+    const port = process.env.PORT || 5000
+app.listen(port, () => console.log('server started'))
