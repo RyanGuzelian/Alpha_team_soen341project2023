@@ -1,0 +1,35 @@
+import React, { useState } from "react";
+//import { Icon } from "react-materialize";
+import EditProfile from "./EditProfile";
+import '../css_files/home.css'
+import {Button, FormLabel, FormGroup, TextField, Typography} from "@mui/material"
+
+const Profile = () => {
+
+  return (
+    <div>
+
+    <form className="profile_page">
+
+          <FormLabel for="profile"> Profile </FormLabel>
+            
+            <FormLabel for="name"> Full Name </FormLabel>
+            
+            <FormLabel for="email"> Email </FormLabel> 
+           
+            <FormLabel for="education"> Education </FormLabel> 
+            
+            <FormLabel for="indus"> Industry </FormLabel> 
+            
+            <FormLabel for="loc"> Location </FormLabel> 
+            
+
+           
+              <Button>edit</Button>
+           
+    </form>
+    </div>
+)
+}
+
+export default Profile
