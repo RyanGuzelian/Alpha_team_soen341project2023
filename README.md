@@ -46,6 +46,3 @@ NodeJS is an open-source JavaScript runtime environment that allows users to run
 
 ## How to use locally
 Please run npm-i command to install necessary node modules for the frontend functions.
-
-## Releases
-TBD.
