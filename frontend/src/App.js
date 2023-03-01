@@ -1,8 +1,6 @@
 //import React from 'react'
 import React, {useState} from "react";
 import { Button } from "@mui/material";
-import Navbar from './components/navbar/navbar'
-import Hero from './components/hero/hero'
 import SignIn from './components/home/SignIn'
 import SignUp from './components/home/SignUp'
 
@@ -32,8 +30,8 @@ function App() {
 
   return (
     
-      <div classname="App" >
-        <div style = {{width: "50%", margin:"auto/"}}>
+      <div className="App" >
+        <div style = {{width: "50%", margin:"auto"}}>
           {
         signIn == true? <SignIn /> : <SignUp/>
         }

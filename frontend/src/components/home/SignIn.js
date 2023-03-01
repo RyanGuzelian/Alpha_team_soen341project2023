@@ -7,10 +7,21 @@ function SignIn() {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
 
+    const [inputs, setInputs] = useState({
+        email: "",
+        password: ""
+    })
+
+    const handleChange = (e) => {
+        setInputs((prevState)=>({
+          ...prevState,
+          [e.target.name] : e.target.value
+        }))
+      }
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(email);
-
     }
 
     return(
@@ -24,6 +35,9 @@ function SignIn() {
                 required
                 id="email"
                 label="Email"
+                value={inputs.email}
+                name="email"
+                onChange={handleChange}
                 />
                 <br/>
             {/* <label for = "password" > password </label>
@@ -34,6 +48,9 @@ function SignIn() {
           id="password"
           label="Password"
           type="password"
+          value={inputs.password}
+          name="password"
+          onChange={handleChange}
         />
         <br/>
             <Button type="submit" variant="outlined"> Sign In </Button>

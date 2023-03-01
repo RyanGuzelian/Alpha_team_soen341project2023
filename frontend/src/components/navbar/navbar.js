@@ -13,7 +13,7 @@ return (
     
 
         <div className={nav? 'navbar navbar-bg' : 'navbar'}>
-            <div classname="logo">
+            <div className="logo">
                 <h2>HIRED</h2>
             </div>
             <ul className="nav-menu">
