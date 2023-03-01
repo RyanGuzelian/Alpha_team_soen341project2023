@@ -18,7 +18,13 @@ mongoose.connect('mongodb+srv://Alpha_team:SOEN341@hired.xuc7hrg.mongodb.net/Use
     console.log('DB connected')
 })
 
-app.set('view engine', 'ejs') // declare that we are going to use EJS
+// app.set('view engine', 'ejs') // declare that we are going to use EJS
+
+// app.get('/',(req,res))
+// {
+//     res.render('index',{text:'Hello World'})
+// }
+
 
 app.listen(5000, () => console.log('server started'))
 
