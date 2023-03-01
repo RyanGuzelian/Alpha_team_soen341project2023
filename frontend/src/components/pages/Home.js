@@ -1,18 +1,20 @@
 import React from 'react'
-import Navbar from '../fixed/Navbar'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Header from '../fixed/Header'
-import {Button} from "@mui/material"
-import EditProfile from './EditProfile'
+import { Button } from '@mui/material'
+
+
 
 
 const Home = () => {
     return (
         <>
-            <Navbar />
+            
             <Header />
+             <Button href="/signup">Get Started</Button>
             
             
-            <Button> Get Started </Button>
+            
         </>
     )
 }

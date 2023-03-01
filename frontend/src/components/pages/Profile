@@ -8,7 +8,7 @@ const Profile = () => {
 
   return (
     <div>
-      <Navbar/>
+      
 
       <Typography>
 
@@ -20,7 +20,7 @@ const Profile = () => {
         <h3>Location</h3>
       </Typography>
 
-     <Button>edit</Button>
+     <Button href="/editprofile">edit</Button>
      
            
     

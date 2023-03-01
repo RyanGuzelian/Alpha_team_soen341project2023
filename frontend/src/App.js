@@ -1,55 +1,34 @@
-//import React from 'react'
-import React, {useState} from "react";
-import Navbar from './components/fixed/Navbar'
-import Hero from './components/hero/hero'
-import SignIn from './components/pages/SignIn'
-import SignUp from './components/pages/SignUp'
+import './css_files/App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import EditProfile from './pages/EditProfile';
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import { theme } from './theme';
+import Navbar from './fixed/Navbar'
+import Profile from './pages/Profile';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
 
 
 
-function App() {
- 
+function App () {
 
-  const [currentForm, setCurrentForm] = useState('signup');
-
-  const [signIn, setSignIn] = useState(true);
-  const [signInText, setSignInText] = useState("Have an account? Sign In!");
-
-  function handleOnClick() {
-    setSignIn(!signIn);
-    if (!signIn){
-      setSignInText("Don't have an account? Sign Up!");
-    } else if (signIn){
-      setSignInText("Have an account? Sign In!");
-    }
-  }
-
-  const toggleForm = (formName) => {
-    setCurrentForm(formName);
-  }
-
-
-  return (
-    
-      <div classname="App">
-      {
-       // currentForm === "signup" ? <SignIn  onFormSwitch={toggleForm} /> : <SignUp onFormSwitch={toggleForm} />
-       signIn == true? <SignIn /> : <SignUp/>
-      }
-      
-      <button onClick={handleOnClick} >
-      {signInText}
-      </button>
-
-      
-      
-      </div>
-      
-       
-   
-  );
-
-
+    return (
+       <div>
+        <Navbar/>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/home" element= {<Home/>} />
+                <Route path="/profile" element= { <Profile />} />
+                <Route path="/editprofile" element ={<EditProfile/>} />
+                <Route path="/signup" element ={<SignUp/>} />
+            </Routes>
+            </BrowserRouter>
+       </div>
+    );
 }
 
 export default App;
+
+
+ 
