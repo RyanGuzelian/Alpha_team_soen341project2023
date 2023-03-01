@@ -5,10 +5,10 @@
     align-items: center;
     justify-content: center;
     color: rgb(14, 13, 13);
-    background-color: #a3ecc5;
+    
   }
   
-  .auth-form-container, .signin-form, .signup-form {
+  .auth-form-container, .signin-form, .signup-form, .edit_profile {
     display: flex;
     flex-direction: column;
   }
