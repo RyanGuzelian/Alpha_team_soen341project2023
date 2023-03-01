@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react'
-import './home.css'
+import '../../css_files/home.css'
 import {Button, FormLabel, TextField} from "@mui/material"
 
 const EditProfile = () => {

@@ -1,6 +1,7 @@
 import React from 'react'
-import Navbar from '../navbar/navbar'
-import Header from '../navbar/Header'
+import Navbar from '../fixed/navbar'
+import Header from '../fixed/Header'
+import {Button} from "@mui/material"
 
 
 const Home = () => {
@@ -8,7 +9,8 @@ const Home = () => {
         <>
             <Navbar />
             <Header />
-            <h1>Home page</h1>
+            
+            <Button> Get Started </Button>
         </>
     )
 }

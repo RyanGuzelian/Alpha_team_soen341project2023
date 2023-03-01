@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 //import { Icon } from "react-materialize";
 import EditProfile from "./EditProfile";
-import './home.css'
+import '../../css_files/home.css'
 import {Button, FormLabel, FormGroup, TextField, Typography} from "@mui/material"
 
 const Profile = () => {

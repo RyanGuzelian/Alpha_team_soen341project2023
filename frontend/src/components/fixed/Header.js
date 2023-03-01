@@ -1,14 +1,14 @@
 import { Box, styled } from '@mui/material'
 import React from 'react'
-import headerImage from '../images/hired.png';
+import headerImage from '../../assets/hired.png';
 
 const Header = () => {
 
     const StyleHeader = styled(Box)(({ theme }) => (
         {
-            display: "flex",
+            display: "inside",
             justifyContent: 'center',
-            minHeight: 400,
+            minHeight: 500,
             backgroundImage: `url(${headerImage})`,
             backgroundSize: "cover",
             backgroundPosition: "center",

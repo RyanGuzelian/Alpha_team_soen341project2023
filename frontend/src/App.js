@@ -1,9 +1,9 @@
 //import React from 'react'
 import React, {useState} from "react";
-import Navbar from './components/navbar/navbar'
-import Hero from './components/hero/hero'
-import SignIn from './components/home/SignIn'
-import SignUp from './components/home/SignUp'
+import Navbar from './components/fixed/navbar'
+
+import SignIn from './components/pages/SignIn'
+import SignUp from './components/pages/SignUp'
 
 
 
