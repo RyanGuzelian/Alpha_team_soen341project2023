@@ -1,20 +1,14 @@
-var mongoose = require('mongoose');
-
-//mongoose.connect('mongodb://127.0.0.1/test')
-
+const mongoose = require('mongoose');
 
 const Users_data = new mongoose.Schema({
     User_type:{
-        type: String,
-        required: true
+        type: String
     },
     name:{
-        type: String,
-        required: true
+        type: String
     },
     password:{
-        type: String,
-        required: true
+        type: String
     },
     posts:{
         type:String
@@ -23,7 +17,8 @@ const Users_data = new mongoose.Schema({
         type: Date,
         default: Date.now
     }
-
 })
 
-module.exports = mongoose.model('users',Users_data)
+const  User = mongoose.model('users',Users_data)
+
+module.exports = User

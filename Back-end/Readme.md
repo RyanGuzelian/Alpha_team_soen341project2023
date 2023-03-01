@@ -46,8 +46,10 @@
 	-views folder has the ejs components of the login, menu, check profile and create a new user
 	- Server.js is where we initialize all the components we use.
 		
-
-
+7)credentials for the atlas database:
+	-username: Alpha_team
+	-password: SOEN341
+	-URL: mongodb+srv://Alpha_team:<password>@hired.xuc7hrg.mongodb.net/?retryWrites=true&w=majority 
 
 
 
