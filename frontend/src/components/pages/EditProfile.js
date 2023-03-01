@@ -1,15 +1,15 @@
 
 import React, { useState } from 'react'
-//import './home.css'
-import {Button, FormLabel, TextField} from "@mui/material"
+import '../../css_files/home.css'
+import {Button, FormLabel, TextField, Typography} from "@mui/material"
 import Navbar from '../fixed/Navbar';
 
 const EditProfile = () => {
 
     const [name, setName] = useState('');
-    const [edu, setEdu] = useState(''); //education
-    const [indus, setIndus] = useState(''); //industry
-    const [loc, setLoc] = useState (''); //location
+    const [num, setNumber] = useState(''); //education
+    const [adrs, setAdrs] = useState(''); //industry
+    const [edu, setEdu] = useState (''); //location
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -21,22 +21,30 @@ const EditProfile = () => {
     return(
 
      <div>
+
          <Navbar/>
 
+
+        <Typography>
+            <h2>
+                Edit Profile Page
+            </h2>
+
+        </Typography>
         <div className="auth-form-container">
         <form className="edit_profile"onSubmit={handleSubmit}>
 
         <FormLabel for="name"> Full Name </FormLabel>
         <TextField value={name} onChange={(e) => setName(e.target.value) } type="name" id="name" placeholder="Full Name" />
 
-        <FormLabel for = "edu" > What is your highest level of Education? </FormLabel>
-        <TextField value={edu} onChange={(e) => setEdu(e.target.value) } type = "edu" placeholder="high school/ cegep/ university" id="edu" name="edu" />
+        <FormLabel for = "num" > Phone Number </FormLabel>
+        <TextField value={num} onChange={(e) => setNumber(e.target.value) } type = "number" placeholder="xxx-xxx-xxxx" id="number" name="number" />
 
-        <FormLabel for = "indus" > What is your Industry? </FormLabel>
-        <TextField value={indus} onChange={(e) => setIndus(e.target.value) } type = "indus" placeholder="engineering/ marketing/ accounting/.." id="indus" name="indus" />
+        <FormLabel for = "adrs" > Address </FormLabel>
+        <TextField value={adrs} onChange={(e) => setAdrs(e.target.value) } type = "adrs" placeholder="Please put your current address" id="adrs" name="adrs" />
 
-        <FormLabel for = "loc" > What is your Location? </FormLabel>
-        <TextField value={loc} onChange={(e) => setLoc(e.target.value) } type = "loc" placeholder="City" id="loc" name="loc" />
+        <FormLabel for = "edu" > Education </FormLabel>
+        <TextField value={edu} onChange={(e) => setEdu(e.target.value) } type = "edu" placeholder="Plaese put your current level of education" id="edu" name="edu" />
 
         <Button type="submit"> Submit Changes </Button>
         </form>
