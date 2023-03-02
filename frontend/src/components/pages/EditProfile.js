@@ -22,7 +22,7 @@ const EditProfile = () => {
 
      <div>
 
-         <Navbar/>
+        
 
 
         <Typography>

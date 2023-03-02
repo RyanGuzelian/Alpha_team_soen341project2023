@@ -15,12 +15,18 @@
 
 
 .nav-menu {
-    display: flex;   
+    display: flex; 
+    list-style: none;  
 }
 
 li {
     padding: 0 1rem;
 }
+.nav-menu a{
+    color: black;
+    
+}
+
 
 
 

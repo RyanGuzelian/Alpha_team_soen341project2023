@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 
 
 
-import '../css_files/navbarStyles.css'
+import '../../css_files/navbarStyles.css'
 
 function Navbar() {
     
