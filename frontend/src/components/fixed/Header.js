@@ -1,6 +1,6 @@
 import { Box, styled } from '@mui/material'
 import React from 'react'
-import headerImage from '../images/hired.png';
+import headerImage from '../../assets/hired.png';
 
 const Header = () => {
 

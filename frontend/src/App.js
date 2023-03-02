@@ -1,13 +1,13 @@
 import './css_files/App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import EditProfile from './pages/EditProfile';
-import { CssBaseline, ThemeProvider } from '@mui/material';
-import { theme } from './theme';
-import Navbar from './fixed/Navbar'
-import Profile from './pages/Profile';
-import SignIn from './pages/SignIn';
-import SignUp from './pages/SignUp';
+import Home from './components/pages/Home';
+import EditProfile from './components/pages/EditProfile';
+
+
+import Navbar from './components/fixed/navbar'
+import Profile from './components/pages/Profile';
+import SignIn from './components/pages/SignIn';
+import SignUp from './components/pages/SignUp';
 
 
 
