@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import EditProfile from "./EditProfile";
 import {Button, Typography} from "@mui/material"
-import Navbar from "../fixed/Navbar";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const Profile = () => {
