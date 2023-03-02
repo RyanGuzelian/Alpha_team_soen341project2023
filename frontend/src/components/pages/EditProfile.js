@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import '../../css_files/home.css'
 import {Button, FormLabel, TextField, Typography} from "@mui/material"
-import Navbar from '../fixed/Navbar';
+
 
 const EditProfile = () => {
 
