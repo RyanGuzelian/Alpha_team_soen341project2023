@@ -7,6 +7,8 @@ var morgan = require('morgan') // api
 
 //IMPORT ROUTES
 const userRoutes = require('./routes/UsersRoutes')
+const postRoutes = require('./routes/PostsRoutes')
+const loginRoutes = require('./routes/LoginRoutes')
 
 //CONNECT DATABASE
 //Atlas database otherwise:  mongoose.connect('mongodb://localhost/HirED_DB') for local DB
@@ -26,7 +28,9 @@ app.use(morgan('dev'))
 app.use(bodyParser.json())
 
 //ROUTES MIDDLEWARE
-app.use('/api',userRoutes)
+app.use('/Users',userRoutes)
+app.use('/Posts',postRoutes)
+app.use('/Login',loginRoutes)
 
 
 //set ejs environment (html alternative)

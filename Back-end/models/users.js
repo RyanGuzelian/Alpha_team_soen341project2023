@@ -1,29 +1,5 @@
 const mongoose = require('mongoose');
 
-
-// Posts embedded Documents
-const Postschema = new mongoose.Schema({
-    title: {
-        type:String,
-        // Required: [true, 'please add a title'],
-        // maxlength: 30
-    },
-    description: {
-        type:String,
-        // Required: [true, 'please add a Description'],
-        // maxlength: 300
-    },
-    date_posted:{
-        type: Date,
-        default: Date.now
-    },
-    location:{
-        type: String,
-        // maxlength: 20
-    }
-})
-
-
 //Users main Documents
 const Users_data = new mongoose.Schema({
     User_type:{
@@ -47,8 +23,6 @@ const Users_data = new mongoose.Schema({
         // required:[true, 'please add a password']
         //
     },
-    
-    posts:[Postschema],
 
     email:{
         type: String,

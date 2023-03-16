@@ -9,12 +9,11 @@ router
     .route('/')
     .get(userController.getAllUsers)
     .post(userController.createUsers)
-    .get(userController.login)
-    .get(userController.getUser)
+
 
 router
     .route('/:id')    
-
+    .get(userController.getUser)
     .patch(userController.updateUser)
     .delete(userController.deleteUser)
 

@@ -1,6 +1,5 @@
 const User = require('../models/users')
 
-
 // General requests
 exports.getAllUsers= async (req,res) => {           // Method for getting the list of users
     
@@ -17,7 +16,8 @@ exports.getAllUsers= async (req,res) => {           // Method for getting the li
     }catch(err){
         res.status(404).json({
             status:'fail',
-            message: err
+            message: err,
+            value:all_users
         })
     }
 }
@@ -29,23 +29,26 @@ exports.createUsers = async (req, res) =>{          // Method for creating a new
     if(userExist){
         return res.status(400).json({
             success:false,
-        message: "E-mail already exists"
+        message: "E-mail already exists",
+        value:userExist
+
         })
     }
 
     try{
         const newUser = await User.create(req.body)
         res.status(200).json({
-            status:'success'
+            status:'success',
+            value:newUser
         })
 
     }catch(err){
         res.status(400).json({
             status:'failed to create',
-            message: err
+            message: err,
+            value:req.body,
+            message:'try again'
         })
-
-
     }
 }
 
@@ -54,7 +57,7 @@ exports.login= async (req,res) => {               // Method for finding one user
     try{
         const {email,password}= req.body.email
         if(!email || !password)
-        {
+       {
             return res.status(400).json({
                 success:false,
                 message:"Email and Password are required"
