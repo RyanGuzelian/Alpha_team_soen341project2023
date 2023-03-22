@@ -1,50 +1,50 @@
 .signin-form, .signup-form {
-    text-align: center;
-    display: flex;
-    min-height: 100vh;
-    align-items: center;
-    justify-content: center;
-    color: rgb(14, 13, 13);
-    background-color: #a3ecc5;
-  }
+  text-align: start;
+  display: flex;
+  min-height: 10vh;
+  align-items: center;
+  justify-content: center;
+  color: rgb(14, 13, 13);
   
-  .auth-form-container, .signin-form, .signup-form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  @media screen and (min-width: 100px) {
-    .auth-form-container {
-      padding: 3rem;
-      border: none;
-      border-radius: 1px;
-      margin: 0rem;
-    }
-  }
-  
-  label {
-    text-align: left;
-    padding: 0.25rem 0;
-  }
-  
-  input {
-    margin: 0.5rem 0;
-    padding:  1rem  ;
+}
+
+.auth-form-container, .signin-form, .signup-form, .edit_profile, .profile_page {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 100px) {
+  .auth-form-container {
+    padding: 3rem;
     border: none;
-    border-radius: 100px;
-  }
-  
-  button {
-    border: none;
-    background-color: rgb(250, 247, 247);
-    padding: 15px;
-    border-radius: 10px;
-    cursor: pointer;
-    color: #040405;
-  }
-  
-  .link-btn {
-    background: none;
-    color: rgb(246, 243, 243);
-    text-decoration: underline;
-  }
+    border-radius: 1px;
+    margin: 0rem;
+  } 
+} 
+
+label {
+  text-align: left;
+  padding: 0.25rem 0;
+}
+
+input {
+  margin: 0.5rem 0;
+  padding:  1rem  ;
+  border: none;
+  border-radius: 100px;
+}
+
+button {
+  border: none;
+  background-color: rgb(163, 162, 162);
+  padding: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #040405;
+}
+
+.link-btn {
+  background: none;
+  color: rgb(246, 243, 243);
+  text-decoration: underline;
+}

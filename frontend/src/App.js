@@ -1,55 +1,34 @@
-//import React from 'react'
-import React, {useState} from "react";
-import Navbar from './components/navbar/navbar'
-import Hero from './components/hero/hero'
-import SignIn from './components/home/SignIn'
-import SignUp from './components/home/SignUp'
+import './css_files/App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './components/pages/Home';
+import EditProfile from './components/pages/EditProfile';
+
+import Navbar from './components/fixed/Navbar'
+import Profile from './components/pages/Profile';
+import SignIn from './components/pages/SignIn';
+import SignUp from './components/pages/SignUp';
 
 
 
-function App() {
- 
+function App () {
 
-  const [currentForm, setCurrentForm] = useState('signup');
-
-  const [signIn, setSignIn] = useState(true);
-  const [signInText, setSignInText] = useState("Have an account? Sign In!");
-
-  function handleOnClick() {
-    setSignIn(!signIn);
-    if (!signIn){
-      setSignInText("Don't have an account? Sign Up!");
-    } else if (signIn){
-      setSignInText("Have an account? Sign In!");
-    }
-  }
-
-  const toggleForm = (formName) => {
-    setCurrentForm(formName);
-  }
-
-
-  return (
-    
-      <div classname="App">
-      {
-       // currentForm === "signup" ? <SignIn  onFormSwitch={toggleForm} /> : <SignUp onFormSwitch={toggleForm} />
-       signIn == true? <SignIn /> : <SignUp/>
-      }
-      
-      <button onClick={handleOnClick} >
-      {signInText}
-      </button>
-
-      
-      
-      </div>
-      
-       
-   
-  );
-
-
+    return (
+       <div>
+        <Navbar/>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/home" element= {<Home/>} />
+                <Route path="/profile" element= { <Profile />} />
+                <Route path="/editprofile" element ={<EditProfile/>} />
+                <Route path="/signup" element ={<SignUp/>} />
+                <Route path="/signin" element={<SignIn/>} />
+            </Routes>
+            </BrowserRouter>
+       </div>
+    );
 }
 
 export default App;
+
+
+ 
