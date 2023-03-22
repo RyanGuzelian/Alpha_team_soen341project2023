@@ -7,8 +7,11 @@ const postController = require('./../Controller/PostsController')
 
 router_Post
     .route('/')
-    .get(postController.getAllPosts)
-    .post(postController.createPost)
+    .get(postController.getAllPosts) //done
+    .delete(postController.deleteAllPosts) //done
 
+router_Post  
+    .route('/:id')
+    .patch(postController.applyPost) //Done
 
 module.exports = router_Post

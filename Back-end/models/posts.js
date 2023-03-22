@@ -19,7 +19,16 @@ const Postschema = new mongoose.Schema({
     location:{
         type: String,
         // maxlength: 19
+    },
+    candidates:[],
+    company:{
+        type:String
+    },
+    _id:{
+        type: String,
+        default: ""
     }
+
 })
 
 const  Posts = mongoose.model('posts',Postschema)

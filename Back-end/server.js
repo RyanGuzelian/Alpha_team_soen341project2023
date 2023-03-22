@@ -9,6 +9,7 @@ var morgan = require('morgan') // api
 const userRoutes = require('./routes/UsersRoutes')
 const postRoutes = require('./routes/PostsRoutes')
 const loginRoutes = require('./routes/LoginRoutes')
+const signUpRoutes = require('./routes/SignUpRoutes')
 
 //CONNECT DATABASE
 //Atlas database otherwise:  mongoose.connect('mongodb://localhost/HirED_DB') for local DB
@@ -31,10 +32,11 @@ app.use(bodyParser.json())
 app.use('/Users',userRoutes)
 app.use('/Posts',postRoutes)
 app.use('/Login',loginRoutes)
+app.use('/Signup',signUpRoutes)
 
 
 //set ejs environment (html alternative)
-app.set('view engine', 'ejs') // declare that we are going to use EJS
+//app.set('view engine', 'ejs') // declare that we are going to use EJS
 
 
 //LISTEN on port 5000

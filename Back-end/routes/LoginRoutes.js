@@ -1,4 +1,3 @@
-
 const express = require('express')
 const router_login = express.Router()
 
@@ -8,6 +7,6 @@ const loginController = require('./../Controller/LoginController')
 
 router_login
     .route('/')
-    .post(loginController.login)
+    .get(loginController.login) //done
 
 module.exports = router_login
