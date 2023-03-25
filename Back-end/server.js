@@ -2,6 +2,7 @@ const express = require('express')
 const app= express()
 require('dotenv').config()
 const mongoose = require('mongoose')
+const cors = require('cors')
 const bodyParser = require('body-parser')
 var morgan = require('morgan') // api
 
@@ -26,6 +27,7 @@ mongoose.connect('mongodb+srv://Alpha_team:SOEN341@hired.xuc7hrg.mongodb.net/Use
 
 //MIDDLEWARE
 app.use(morgan('dev'))
+app.use(cors())
 app.use(bodyParser.json())
 
 //ROUTES MIDDLEWARE
