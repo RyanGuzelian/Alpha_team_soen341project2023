@@ -1,4 +1,4 @@
-.signin-form, .signup-form {
+.signin-form, .signup-form, .postForm {
   text-align: start;
   display: flex;
   min-height: 10vh;
@@ -8,7 +8,7 @@
   
 }
 
-.auth-form-container, .signin-form, .signup-form, .edit_profile, .profile_page {
+.auth-form-container, .signin-form, .signup-form, .edit_profile, .profile_page, .postForm {
   display: flex;
   flex-direction: column;
 }

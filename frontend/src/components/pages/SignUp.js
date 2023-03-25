@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {Snackbar} from "@mui/material";
 //import './home.css'
 import {
   FormLabel,
@@ -12,55 +14,93 @@ import {
 } from "@mui/material";
 
 function SignUp() {
-
-
   const [inputs, setInputs] = useState({
     name: "",
     email: "",
     password: "",
-    userType: "",
-    education: "",
-    industry: "",
-    location: "",
+    User_type: "",
+
+    //userType: "",
+    //education: "",
+    //industry: "",
+    //location: "",
+    ///////////
+    lastname: "",
+    company: "",
+    // _id: "",
+    phone: "",
+    // CV: "",
+    // applied: [],
   });
+  const navigate = useNavigate();
+  const [postable, setPostable] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [isEmployer, setIsEmployer] = useState(false);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  useEffect(() => {
+    if (inputs.User_type === "employer") {
+      setIsEmployer(true);
+    } else {
+      setIsEmployer(false);
+    }
+  }, [inputs]);
+
+  
 
   const handleChange = (e) => {
-    setInputs((prevState)=>({
+    setInputs((prevState) => ({
       ...prevState,
-      [e.target.name] : e.target.value
-    }))
-  }
+      [e.target.name]: e.target.value,
+    }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (inputs.password.length < 8){
+      setOpen(true);
+    } else {
+      setPostable(true);
+    }
   };
+
+  useEffect(() => {
+    if (postable) {
+      fetch("http://localhost:9000/Signup", {
+        // Enter your IP address here
+
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(inputs), // body data type must match "Content-Type" header
+      })
+        .then((response) => response.json())
+        .then((json) => {
+          console.log(json);
+          if (json["status"] === "success") {
+            navigate("/home");
+          }
+        });
+      setPostable(false);
+    }
+  });
 
   return (
     <div className="auth-form-container" style={{ paddingTop: "5%" }}>
       <form className="signup-form" onSubmit={handleSubmit}>
         <FormGroup>
-          
-          <TextField required id="name" onChange={handleChange} value={inputs.name} name="name" label="Name" />
-          <br />
-
-          
-          <TextField required id="email" onChange={handleChange} value={inputs.email} name="email" label="Email" />
-          <br />
-
-          <TextField
+          <FormControl
             required
-            id="password"
-            value={inputs.password}
             onChange={handleChange}
-            label="Password"
-            type="password"
-            name="password"
-          />
-          <br />
-        
-          <FormControl required name="userType" onChange={handleChange} value={inputs.userType}>
-            <FormLabel id="userType">User Type</FormLabel>
-            <RadioGroup>
+            value={inputs.User_type}
+          >
+            <FormLabel id="User_type">User Type</FormLabel>
+            <RadioGroup name="User_type">
               <FormControlLabel
                 value="seeker"
                 control={<Radio />}
@@ -74,7 +114,73 @@ function SignUp() {
             </RadioGroup>
           </FormControl>
           <br />
-          <FormControl required name="education" onChange={handleChange} value={inputs.education}>
+
+          {isEmployer ? (
+            <>
+              <TextField
+                required
+                id="company"
+                onChange={handleChange}
+                value={inputs.company}
+                name="company"
+                label="Company Name"
+              />
+              <br />
+            </>
+          ) : (
+            <>
+              <TextField
+                required
+                id="name"
+                onChange={handleChange}
+                value={inputs.name}
+                name="name"
+                label="Name"
+              />
+              <br />
+
+              <TextField
+                required
+                id="lastName"
+                onChange={handleChange}
+                value={inputs.lastName}
+                name="lastName"
+                label="Last Name"
+              />
+              <br />
+            </>
+          )}
+
+          <TextField
+            required
+            id="email"
+            onChange={handleChange}
+            value={inputs.email}
+            name="email"
+            label="Email"
+          />
+          <br />
+
+          <TextField
+            required
+            id="password"
+            value={inputs.password}
+            onChange={handleChange}
+            label="Password"
+            type="password"
+            name="password"
+          />
+          <br />
+
+          <TextField
+            id="phone"
+            onChange={handleChange}
+            value={inputs.phone}
+            name="phone"
+            label="Phone Number"
+          />
+          <br />
+          {/* <FormControl required name="education" onChange={handleChange} value={inputs.education}>
             <FormLabel id="education">Highest level of education</FormLabel>
             <RadioGroup>
               <FormControlLabel
@@ -93,11 +199,10 @@ function SignUp() {
                 label="University"
               />
             </RadioGroup>
-          </FormControl>
+          </FormControl> */}
           <br />
 
-         
-          <TextField
+          {/* <TextField
             required
             id="location"
             onChange={handleChange}
@@ -114,7 +219,7 @@ function SignUp() {
             name="industry"
             label="Industry"
           />
-          <br />
+          <br /> */}
           <Button type="submit" variant="outlined">
             Sign Up
           </Button>
@@ -122,8 +227,13 @@ function SignUp() {
       </form>
       <br />
       <Button href="/signin"> Already have an Account? Sign In</Button>
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message="Password needs to have a minimum length of 8 characters"
+      />
     </div>
-    
   );
 }
 
