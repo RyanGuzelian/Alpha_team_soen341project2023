@@ -14,4 +14,8 @@ router_Post
     .route('/:id')
     .patch(postController.applyPost) //Done
 
+router_Post
+    .route('/postJob')
+    .post(postController.createPost)
+
 module.exports = router_Post
