@@ -1,9 +1,20 @@
 import { TextField, Button } from "@mui/material";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import UserContext from "../../UserContext";
 
 
 function Post() {
+
+    const { user } = useContext(UserContext);
+    
+    useEffect(() => {
+        if(user["User_type"]!=="employer"){
+            navigate('/home')
+        }
+    })
+    
+
     const [inputs, setInputs] = useState({
         title:"",
         description:"",
@@ -50,7 +61,7 @@ function Post() {
         }
     })
 
-    return(
+    return( user["User_type"]==="employer"?
         <>
         <form style = {{paddingTop:"5%"}} className="postForm" onSubmit={handleSubmit}>
             <TextField required id="title" onChange={handleChange} name="title" label="Title"/>
@@ -66,6 +77,8 @@ function Post() {
             Post
           </Button>
         </form>
+        </>:
+        <>
         </>
     )
 }

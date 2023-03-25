@@ -12,7 +12,7 @@ const Profile = () => {
 
       <Typography>
 
-        <h1> My Profile</h1>
+        <h1>My Profile</h1>
         <h3>Full Name</h3>
         <h3>Email</h3>
         <h3>Education</h3>

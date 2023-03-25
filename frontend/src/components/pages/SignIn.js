@@ -35,8 +35,6 @@ function SignIn() {
 
   useEffect(() => {
     if (isSubmitted) {
-      const encodedEmail = encodeURIComponent(inputs.email);
-      const encodedPassword = encodeURIComponent(inputs.password);
       fetch("http://localhost:9000/Login", {
         method: "POST",
         mode: "cors",
@@ -51,10 +49,12 @@ function SignIn() {
           if (json["status"] === "success") {
             setSnackbarMessage("Login successful!");
             setSnackbarSeverity("success")
-            setUser(json["data"])
+            setUser(json["data"]["userExist"])
+            localStorage.setItem("user", JSON.stringify(json["data"]["userExist"]));
+            console.log(json["data"]["userExist"])
             setOpen(true);
             setTimeout(() => {
-                navigate("/home");
+                navigate("/postJob");
             }, 2000)
           } else {
             setSnackbarMessage(json["message"]);

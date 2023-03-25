@@ -1,5 +1,5 @@
 import './css_files/App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useState } from 'react';
 import Home from './components/pages/Home';
 import EditProfile from './components/pages/EditProfile';
@@ -14,13 +14,16 @@ import UserContext from "./UserContext";
 
 
 function App () {
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState(() => {
+        const storedUser = localStorage.getItem("user");
+        return storedUser ? JSON.parse(storedUser) : null;
+      });
     return (
         <UserContext.Provider value={{ user, setUser }}>
-       <div>
         <Navbar/>
         <BrowserRouter>
             <Routes>
+                <Route path="/" element={<Navigate to="/home" />} />
                 <Route path="/home" element= {<Home/>} />
                 <Route path="/profile" element= { <Profile />} />
                 <Route path="/editprofile" element ={<EditProfile/>} />
@@ -29,7 +32,6 @@ function App () {
                 <Route path="/postJob" element={<Post/>} />
             </Routes>
             </BrowserRouter>
-       </div>
        </UserContext.Provider>
     );
 }
