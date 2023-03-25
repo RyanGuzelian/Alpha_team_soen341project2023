@@ -1,5 +1,6 @@
 import './css_files/App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
 import Home from './components/pages/Home';
 import EditProfile from './components/pages/EditProfile';
 
@@ -7,13 +8,15 @@ import Navbar from './components/fixed/Navbar'
 import Profile from './components/pages/Profile';
 import SignIn from './components/pages/SignIn';
 import SignUp from './components/pages/SignUp';
-import Post from './components/pages/Post'
+import Post from './components/pages/Post';
+import UserContext from "./UserContext";
 
 
 
 function App () {
-
+    const [user, setUser] = useState(null)
     return (
+        <UserContext.Provider value={{ user, setUser }}>
        <div>
         <Navbar/>
         <BrowserRouter>
@@ -27,6 +30,7 @@ function App () {
             </Routes>
             </BrowserRouter>
        </div>
+       </UserContext.Provider>
     );
 }
 
