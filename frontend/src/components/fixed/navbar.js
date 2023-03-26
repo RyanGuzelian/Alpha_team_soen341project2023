@@ -17,7 +17,7 @@ return (
             <CustomLink href="/home"> Home </CustomLink>
            </li> 
            <li> 
-            <a href="/"> Explore Jobs </a>
+            <a href="/exp_jobs"> Explore Jobs </a>
            </li>
            <li> 
             <CustomLink href="/profile"> Profile </CustomLink>

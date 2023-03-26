@@ -10,6 +10,7 @@ import SignIn from './components/pages/SignIn';
 import SignUp from './components/pages/SignUp';
 import Post from './components/pages/Post';
 import UserContext from "./UserContext";
+import Explore_Jobs from './components/pages/Explore_Jobs';
 
 
 
@@ -30,6 +31,7 @@ function App () {
                 <Route path="/signup" element ={<SignUp/>} />
                 <Route path="/signin" element={<SignIn/>} />
                 <Route path="/postJob" element={<Post/>} />
+                <Route path="/exp_jobs" element={<Explore_Jobs/>}/>
             </Routes>
             </BrowserRouter>
        </UserContext.Provider>
