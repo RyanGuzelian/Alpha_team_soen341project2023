@@ -14,6 +14,7 @@ import Explore_Jobs from './components/pages/Explore_Jobs';
 
 
 
+
 function App () {
     const [user, setUser] = useState(() => {
         const storedUser = localStorage.getItem("user");
@@ -32,6 +33,7 @@ function App () {
                 <Route path="/signin" element={<SignIn/>} />
                 <Route path="/postJob" element={<Post/>} />
                 <Route path="/exp_jobs" element={<Explore_Jobs/>}/>
+                
             </Routes>
             </BrowserRouter>
        </UserContext.Provider>
