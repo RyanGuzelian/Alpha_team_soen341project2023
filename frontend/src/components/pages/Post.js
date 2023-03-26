@@ -7,6 +7,7 @@ import UserContext from "../../UserContext";
 function Post() {
 
     const { user } = useContext(UserContext);
+    console.log(user["_id"])
     
     useEffect(() => {
         if(user["User_type"]!=="employer"){
@@ -39,7 +40,7 @@ function Post() {
 
     useEffect(() => {
         if(postable){
-          fetch('http://localhost:9000/Posts/postJob', {  // TODO: Change this to the one in UsersRoutes made by Cristian
+          fetch(`http://localhost:9000/Users/${user["_id"]}/Posts`, {
   
         method: 'POST', 
         mode: 'cors', 
@@ -47,7 +48,6 @@ function Post() {
           'Content-Type': 'application/json',
       },
         body:JSON.stringify(inputs)
-        
       }) .then((response) => response.json())
       .then((json) => {
         console.log(json)
