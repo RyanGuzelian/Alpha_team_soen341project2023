@@ -22,6 +22,9 @@ return (
            <li> 
             <CustomLink href="/profile"> Profile </CustomLink>
            </li>
+           <li> 
+            <CustomLink href="/test"> test </CustomLink>
+           </li>
           
 
             
