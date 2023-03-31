@@ -1,0 +1,40 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Node.js CI
+
+on:
+  push:
+    branches: [ "SPRINT_3" ]
+  pull_request:
+    branches: [ "SPRINT_3" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Install and build backend
+      working-directory: ./Back-end
+      run: |
+        npm ci
+        npm i
+        npm run build
+
+    - name: Install and build frontend
+      working-directory: ./frontend
+      run: |
+        npm ci
+        npm i
+        npm run build
