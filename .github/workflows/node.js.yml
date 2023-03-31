@@ -29,10 +29,12 @@ jobs:
       working-directory: ./Back-end
       run: |
         npm ci
+        npm i
         npm run build
 
     - name: Install and build frontend
       working-directory: ./frontend
       run: |
         npm ci
+        npm i
         npm run build
