@@ -44,7 +44,7 @@ exports.applyPost = async (req, res) => {                 //Method for updating 
     })
     
 
-    if(alreadyApplied[0].candidates.length!=0)              //dOES THE LOGICAL COMPARISON FOR THE ARRAY OF FOUND CANDIDATES
+    if(alreadyApplied[0].candidates.length!=0)              //DOES THE LOGICAL COMPARISON FOR THE ARRAY OF FOUND CANDIDATES
     {
         return res.status(404).json({
             results:"You have already applied for this position",
@@ -67,9 +67,10 @@ exports.applyPost = async (req, res) => {                 //Method for updating 
     }
 
     const mystatus_employer ={
-        id:myUser.id,
+        id:myPost.id,
+        userId:myUser.id,
         name:myUser.name+" "+myUser.lastname,
-        status: "pending",
+        status: "pending"
     }
 
     const mystatus_jobseeker ={
@@ -207,6 +208,16 @@ exports.getMyPost= async (req,res) => {               //Method to get specific P
 
 exports.deletePost = async (req, res) => {            //Method to delete specific post
     try{
+        //const myremoved=await User.updateMany({applied: req.params.id},)
+        
+        const removeCandidatesfromUsers=await User.updateMany({applied:{     //remove from users list of applied jobs
+            $elemMatch: {
+                id:req.params.id
+            }
+        }},{ $pull:{
+            applied:{id:req.params.id}
+        }})
+        
         const myPost = await Post.findByIdAndDelete(req.params.id)
 
         res.status(204).json({
@@ -224,8 +235,20 @@ exports.deletePost = async (req, res) => {            //Method to delete specifi
 
 exports.updatePost = async (req, res) => {                 //Method for updating the Post info
     try{
-        const myPost = await Post.findByIdAndUpdate(req.params.id,req.body)
-    
+        
+        const removeCandidatesfromUsers=await User.updateMany({applied:{     //remove from users list of applied jobs
+            $elemMatch: {
+                id:req.params.id
+            }
+        }},{ $pull:{
+            applied:{id:req.params.id}
+        }})
+
+        const modify= req.body
+        modify.candidates=[]
+        const myPost = await Post.findByIdAndUpdate(req.params.id,modify)
+        myPost.candidates=[]
+
         res.status(200).json({
             status: 'success',
             data:{
