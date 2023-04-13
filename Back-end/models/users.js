@@ -43,7 +43,8 @@ const Users_data = new mongoose.Schema({
         type: String,
         default: ""
     },
-    applied:[]
+    applied:[],
+    interviews:[]
     
 })
 
