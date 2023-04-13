@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { Typography, FormLabel, Box } from '@mui/material';
 import { BoxProps } from "@mui/system";
+import {Link} from "react-router-dom";
 
 export default function Explore_Jobs() {
   const [data, setData] = useState(null);
@@ -66,8 +67,8 @@ export default function Explore_Jobs() {
       )}
       <ul>
         { data &&
-          data["data"]["all_Post"].map(({ id, title, company, description, location, date_posted }) => (
-          < li key={id}>
+          data["data"]["all_Post"].map(({ _id, title, company, description, location, date_posted }) => (
+          < li key={_id}>
                
       <div style={{ width: '100%' }}>
     <Box sx={{
@@ -80,7 +81,8 @@ export default function Explore_Jobs() {
           borderRadius: 1,
         }} >
           <Item>
-          <h3>Job Title: {title}</h3>
+          {/* <h3><a href={`localhost:9000/post?id=${id}`}>Job Title: {title}</a></h3> */}
+          <Link to={{ pathname: `/post/${_id}`}}>Job Title: {title}</Link>
           <h4> Company: {company}</h4>
           <h4>Job description: {description}</h4>
           <h5>Location: {location}</h5>

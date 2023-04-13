@@ -11,6 +11,7 @@ import SignUp from './components/pages/SignUp';
 import Post from './components/pages/Post';
 import UserContext from "./UserContext";
 import Explore_Jobs from './components/pages/Explore_Jobs';
+import Individual_Post from './components/pages/Individual_Post';
 
 
 
@@ -33,7 +34,7 @@ function App () {
                 <Route path="/signin" element={<SignIn/>} />
                 <Route path="/postJob" element={<Post/>} />
                 <Route path="/exp_jobs" element={<Explore_Jobs/>}/>
-                
+                <Route path="/post/:postId" element={<Individual_Post/>}/>
             </Routes>
             </BrowserRouter>
        </UserContext.Provider>

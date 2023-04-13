@@ -1,12 +1,13 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 
+import UserContext from "../../UserContext";
 
 
 
 import '../../css_files/navbarStyles.css'
 
 function Navbar() {
-    
+    const { user } = useContext(UserContext);
 return (
     <div className='navbar'>
         <div className="logo">
@@ -22,7 +23,18 @@ return (
            <li> 
             <CustomLink href="/profile"> Profile </CustomLink>
            </li>
-          
+            {
+                // if (user != null){
+                    user?.User_type==="employer"?
+                <>
+                <li>
+                <CustomLink href="/postJob">Post Job</CustomLink>
+                </li></>
+                :
+                <li><CustomLink href="/signUp">Sign Up</CustomLink></li>
+                
+                
+            }
 
             
         </div>
