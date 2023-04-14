@@ -73,24 +73,47 @@ exports.getUser= async (req,res) => {               // Method for finding one us
     }
 }
 
-exports.updateUser = async (req, res) => {                 //Method for updating the user info
-    try{
-        const myUser = await User.findByIdAndUpdate(req.params.id,req.body)
-    
-        res.status(200).json({
-            status: 'success',
-            data:{
-                myUser
-            }
-        })
-
-    }catch(err){
-        res.status(407).json({
-            status:'fail',
-            message: err
-        })
+// controllers/userController.js
+exports.updateUser = async (req, res) => {
+    try {
+      const allowedUpdates = ["name", "password", "company", "phone"];
+      const updates = Object.keys(req.body);
+      const isValidUpdate = updates.every((update) => allowedUpdates.includes(update));
+  
+      if (!isValidUpdate) {
+        return res.status(400).json({
+          status: "fail",
+          message: "Invalid updates!",
+        });
+      }
+  
+      const updatedUser = await User.findByIdAndUpdate(
+        req.params.userId,
+        req.body,
+        { new: true, runValidators: true }
+      );
+  
+      if (!updatedUser) {
+        return res.status(404).json({
+          status: "fail",
+          message: "User not found",
+        });
+      }
+  
+      res.status(200).json({
+        status: "success",
+        data: {
+          user: updatedUser,
+        },
+      });
+    } catch (err) {
+      res.status(400).json({
+        status: "fail",
+        message: err,
+      });
     }
-}
+  };
+  
 
 exports.deleteUser = async (req, res) => {                //Method for deleting User
     try{
