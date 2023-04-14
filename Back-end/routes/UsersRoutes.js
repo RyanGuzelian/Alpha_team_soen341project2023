@@ -28,4 +28,10 @@ router
     .patch(postController.updatePost)  // done
 
 
+router
+    .get('/Users/:userId', userController.getUserById);
+
+router
+    .patch('/Users/:userId/addInterview/:postId', userController.addInterview);
+
 module.exports = router

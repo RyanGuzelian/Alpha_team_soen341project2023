@@ -21,6 +21,7 @@ const Postschema = new mongoose.Schema({
         // maxlength: 19
     },
     candidates:[],
+    selectedCandidates:[],
     company:{
         type:String
     },

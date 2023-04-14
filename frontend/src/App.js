@@ -11,6 +11,9 @@ import Post from './components/pages/Post';
 import UserContext from "./UserContext";
 import Explore_Jobs from './components/pages/Explore_Jobs';
 import Individual_Post from './components/pages/Individual_Post';
+import ManagePosts from './components/pages/CompanyPosts';
+import PostDetails from './components/pages/PostDetails';
+import Interviews from './components/pages/Interviews';
 import  ThemeProvider  from './components/theme/ThemeProvider';
 
 function App () {
@@ -23,22 +26,24 @@ function App () {
     <UserContext.Provider value={{ user, setUser }}>
       <ThemeProvider>
         <BrowserRouter>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Navigate to="/home" />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/editprofile" element={<EditProfile />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/signin" element={<SignIn />} />
-            <Route path="/postJob" element={<Post />} />
-            <Route path="/exp_jobs" element={<Explore_Jobs />} />
-            <Route path="/post/:postId" element={<Individual_Post />} />
-          </Routes>
-        </BrowserRouter>
-      </ThemeProvider>
-    </UserContext.Provider>
-  );
+            <Routes>
+                <Route path="/" element={<Navigate to="/home" />} />
+                <Route path="/home" element= {<Home/>} />
+                <Route path="/profile" element= { <Profile />} />
+                <Route path="/editprofile" element ={<EditProfile/>} />
+                <Route path="/signup" element ={<SignUp/>} />
+                <Route path="/signin" element={<SignIn/>} />
+                <Route path="/postJob" element={<Post/>} />
+                <Route path="/exp_jobs" element={<Explore_Jobs/>}/>
+                <Route path="/post/:postId" element={<Individual_Post/>}/>
+                <Route path="/companyposts/:company" element={<ManagePosts/>}/>
+                <Route path="/postdetails/:postId" element={<PostDetails/>} />
+                <Route path="/interviews" element={<Interviews/>}/>
+            </Routes>
+            </BrowserRouter>
+            </ThemeProvider>
+       </UserContext.Provider>
+    );
 }
 
 export default App;
