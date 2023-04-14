@@ -285,3 +285,71 @@ exports.applyToPost = async (req, res) => {
       });
     }
   };
+
+  exports.getPostsByCompany = async (req, res) => {
+    try {
+      const companyId = req.params.companyId;
+      const posts = await Post.find({ company: companyId });
+  
+      res.status(200).json({
+        status: "success",
+        data: {
+          posts,
+        },
+      });
+    } catch (err) {
+      res.status(400).json({
+        status: "failed to fetch posts",
+        message: err,
+      });
+    }
+  };
+  
+  exports.getCandidatesByPostId = async (req, res) => {
+    try {
+      const postId = req.params.postId;
+      const post = await Post.findById(postId);
+  
+      if (!post) {
+        return res.status(404).json({
+          status: 'failed',
+          message: 'Post not found',
+        });
+      }
+  
+      res.status(200).json({
+        status: 'success',
+        data: {
+          candidates: post.candidates,
+        },
+      });
+    } catch (err) {
+      res.status(400).json({
+        status: 'failed',
+        message: err,
+      });
+    }
+  };
+
+  exports.addSelectedCandidate = async (req, res) => {
+    try {
+      const post = await Post.findByIdAndUpdate(
+        req.params.postId,
+        { $addToSet: { selectedCandidates: req.params.userId } },
+        { new: true, runValidators: true }
+      );
+      res.status(200).json({
+        status: 'success',
+        data: {
+          post,
+        },
+      });
+    } catch (err) {
+      res.status(400).json({
+        status: 'fail',
+        message: err,
+      });
+    }
+  };
+  
+  

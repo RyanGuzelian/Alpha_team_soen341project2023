@@ -12,6 +12,9 @@ import Post from './components/pages/Post';
 import UserContext from "./UserContext";
 import Explore_Jobs from './components/pages/Explore_Jobs';
 import Individual_Post from './components/pages/Individual_Post';
+import ManagePosts from './components/pages/CompanyPosts';
+import PostDetails from './components/pages/PostDetails';
+
 
 
 
@@ -35,6 +38,8 @@ function App () {
                 <Route path="/postJob" element={<Post/>} />
                 <Route path="/exp_jobs" element={<Explore_Jobs/>}/>
                 <Route path="/post/:postId" element={<Individual_Post/>}/>
+                <Route path="/companyposts/:company" element={<ManagePosts/>}/>
+                <Route path="/postdetails/:postId" element={<PostDetails/>} />
             </Routes>
             </BrowserRouter>
        </UserContext.Provider>

@@ -22,4 +22,16 @@ router_Post
     .route("/apply")
     .post(postController.applyToPost);
 
+router_Post
+    .route('/company/:companyId')
+    .get(postController.getPostsByCompany);
+
+router_Post
+    .route('/:postId/candidates')
+    .get(postController.getCandidatesByPostId);
+
+router_Post
+    .patch('/Posts/:postId/selectCandidate/:userId', postController.addSelectedCandidate);
+
+
 module.exports = router_Post

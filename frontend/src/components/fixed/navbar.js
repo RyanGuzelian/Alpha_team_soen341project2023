@@ -29,6 +29,9 @@ return (
                 <>
                 <li>
                 <CustomLink href="/postJob">Post Job</CustomLink>
+                </li>
+                <li>
+                <CustomLink href={`/companyPosts/${user["_id"]}`}>All Posts</CustomLink>
                 </li></>
                 :
                 <li><CustomLink href="/signUp">Sign Up</CustomLink></li>

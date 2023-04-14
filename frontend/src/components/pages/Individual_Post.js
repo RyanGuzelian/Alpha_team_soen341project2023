@@ -1,5 +1,5 @@
 import { React, useState, useEffect, useContext } from "react";
-import { Button, Typography } from "@mui/material";
+import { Button, Typography, Snackbar, Alert } from "@mui/material";
 import { useParams } from "react-router-dom";
 import UserContext from "../../UserContext";
 
@@ -10,6 +10,11 @@ const Individual_Job = () => {
   const [error, setError] = useState(null);
   const [applied, setApplied] = useState(false);
   const { postId } = useParams();
+
+  const [open, setOpen] = useState(false);
+  
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [snackbarSeverity, setSnackbarSeverity] = useState("");
 
 
   const[inputs, setInputs] = useState({
@@ -27,18 +32,27 @@ const Individual_Job = () => {
       });
   
       if (!response.ok) {
-        throw new Error(`HTTP error: ${response.status}`);
+        setSnackbarMessage("Error applying")
+        setSnackbarSeverity("error")
+        setOpen(true);
+      } else {
+        setApplied(true);
+        setSnackbarMessage("Applied successfully!")
+        setSnackbarSeverity("success")
+        setOpen(true);
       }
   
       const data = await response.json();
       console.log(data);
-      setApplied(true);
     } catch (error) {
       console.error("Error applying to the post:", error);
       // Handle the error as needed
     }
   }
 
+  const handleClose = () => {
+    setOpen(false);
+  };
   
   useEffect(() => {
     fetch(`http://localhost:9000/Users/Concordia548/Posts/${postId}`)
@@ -86,6 +100,16 @@ const Individual_Job = () => {
       </Typography>
 
       <Button onClick={handleClick}>Apply</Button>
+      <Snackbar
+        open={open}
+        severity="success"
+        autoHideDuration={6000}
+        onClose={handleClose}
+      >
+        <Alert onClose={handleClose} severity={snackbarSeverity} sx={{ width: '100%' }}>
+            {snackbarMessage}
+  </Alert>
+        </Snackbar>
     </div>
   );
 };

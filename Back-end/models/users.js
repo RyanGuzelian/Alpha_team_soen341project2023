@@ -45,7 +45,6 @@ const Users_data = new mongoose.Schema({
     },
     applied:[],
     interviews:[]
-    
 })
 
 const  User = mongoose.model('users',Users_data)
