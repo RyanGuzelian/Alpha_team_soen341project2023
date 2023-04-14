@@ -12,6 +12,7 @@ import {
   FormGroup,
   Button,
 } from "@mui/material";
+import ThemeProvider from "../theme/ThemeProvider";
 
 function SignUp() {
   const [inputs, setInputs] = useState({
@@ -91,6 +92,8 @@ function SignUp() {
   });
 
   return (
+
+    
     <div className="auth-form-container" style={{ paddingTop: "5%" }}>
       <form className="signup-form" onSubmit={handleSubmit}>
         <FormGroup>
@@ -234,6 +237,7 @@ function SignUp() {
         message="Password needs to have a minimum length of 8 characters"
       />
     </div>
+    
   );
 }
 

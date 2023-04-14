@@ -1,13 +1,25 @@
 import React, { useState, useContext } from "react";
-
 import UserContext from "../../UserContext";
+import  ThemeContext  from "../theme/ThemeContext";
 
 import "../../css_files/navbarStyles.css";
 
 function Navbar() {
   const { user } = useContext(UserContext);
+  const { currentTheme, toggleTheme } = useContext(ThemeContext);
+  function CustomLink({ href, children, ...props }) {
+    const path = window.location.pathname;
+
+    return (
+      <li className={path === href ? "active" : ""}>
+        <a href={href} {...props}>
+          {children}
+        </a>
+      </li>
+    );
+  }
   return (
-    <div className="navbar">
+    <div className={`navbar ${currentTheme}`}>
       <div className="logo">
         <h2>HIRED</h2>
       </div>
@@ -58,18 +70,6 @@ function Navbar() {
   );
 }
 
-function CustomLink({ href, children, ...props }) {
-  const path = window.location.pathname;
 
-  return (
-    <div>
-      <li className={path === href ? "active" : ""}>
-        <a href={href} {...props}>
-          {children}
-        </a>
-      </li>
-    </div>
-  );
-}
 
 export default Navbar;

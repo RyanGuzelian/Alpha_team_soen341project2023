@@ -6,12 +6,15 @@ const Header = () => {
 
     const StyleHeader = styled(Box)(({ theme }) => (
         {
-            display: "inside",
+            display: 'flex',
             justifyContent: 'center',
-            minHeight: 500,
+            alignItems: "center",
+            minHeight: 600,
             backgroundImage: `url(${headerImage})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
+            width: "full",
+            height: "30%",
             backgroundColor: theme.palette.secondary.main
         }
 
@@ -19,7 +22,7 @@ const Header = () => {
     return (
         <>
             <StyleHeader >
-
+            
             </StyleHeader>
         </>
     )
