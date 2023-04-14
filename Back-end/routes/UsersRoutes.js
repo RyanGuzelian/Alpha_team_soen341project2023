@@ -34,4 +34,7 @@ router
 router
     .patch('/Users/:userId/addInterview/:postId', userController.addInterview);
 
+router
+    .patch('/:userId/update', userController.updateUser);
+
 module.exports = router
