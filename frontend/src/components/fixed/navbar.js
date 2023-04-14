@@ -18,6 +18,8 @@ function Navbar() {
       </li>
     );
   }
+
+
   return (
     <div className={`navbar ${currentTheme}`}>
       <div className="logo">
@@ -64,7 +66,9 @@ function Navbar() {
               </li>
             </>
           )
+          
         }
+        <button onClick={toggleTheme}>Toggle Theme</button>
       </div>
     </div>
   );

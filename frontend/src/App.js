@@ -25,6 +25,7 @@ function App () {
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <ThemeProvider>
+        <Navbar/>
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Navigate to="/home" />} />
