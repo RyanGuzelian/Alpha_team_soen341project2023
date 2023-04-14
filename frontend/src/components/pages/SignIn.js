@@ -1,8 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
-import { FormGroup, Button, TextField, Snackbar, Alert } from "@mui/material";
+import {
+  FormGroup,
+  Button,
+  TextField,
+  Snackbar,
+  Alert,
+} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../../UserContext";
-//import './home.css'
+
 
 function SignIn() {
   const navigate = useNavigate();
@@ -10,12 +16,12 @@ function SignIn() {
   const [open, setOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [snackbarSeverity, setSnackbarSeverity] = useState("");
-  const { setUser } = useContext(UserContext)
-
+  const { setUser } = useContext(UserContext);
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
   });
+  
 
   const handleChange = (e) => {
     setInputs((prevState) => ({
@@ -48,18 +54,21 @@ function SignIn() {
           console.log(json);
           if (json["status"] === "success") {
             setSnackbarMessage("Login successful!");
-            setSnackbarSeverity("success")
-            setUser(json["data"]["userExist"])
-            localStorage.setItem("user", JSON.stringify(json["data"]["userExist"]));
-            console.log(json["data"]["userExist"])
+            setSnackbarSeverity("success");
+            setUser(json["data"]["userExist"]);
+            localStorage.setItem(
+              "user",
+              JSON.stringify(json["data"]["userExist"])
+            );
+            console.log(json["data"]["userExist"]);
             setOpen(true);
             setTimeout(() => {
-                navigate("/postJob");
-            }, 2000)
+              navigate("/postJob");
+            }, 2000);
           } else {
             setSnackbarMessage(json["message"]);
             setSnackbarSeverity("error");
-            setOpen(true)
+            setOpen(true);
           }
         });
       setIsSubmitted(false);
@@ -67,11 +76,12 @@ function SignIn() {
   }, [isSubmitted]);
 
   return (
-    <div className="auth-form-container" style={{ paddingTop: "5%" }}>
+    <div
+      className="auth-form-container"
+     
+    >
       <form className="signin-form" onSubmit={handleSubmit}>
         <FormGroup>
-          {/* <label for = "email" > email </label>
-            <input value={email} onChange={(e) => setEmail(e.target.value) }  type = "email" placeholder="youremail@email.com" id="email" name="email" /> */}
           <TextField
             required
             id="email"
@@ -81,9 +91,6 @@ function SignIn() {
             onChange={handleChange}
           />
           <br />
-          {/* <label for = "password" > password </label>
-            <input value={pass} onChange={(e) => setPass(e.target.value) } type = "password" placeholder="*******" id="password" name="password" /> */}
-
           <TextField
             required
             id="password"
@@ -100,18 +107,20 @@ function SignIn() {
           </Button>
         </FormGroup>
       </form>
-
-      {/* <button className="link-btn" onClick= {() => props.onFormSwitch('signup')} > Don't have account? Sign Up here.</button> */}
       <Snackbar
         open={open}
         severity="success"
         autoHideDuration={6000}
         onClose={handleClose}
       >
-        <Alert onClose={handleClose} severity={snackbarSeverity} sx={{ width: '100%' }}>
-            {snackbarMessage}
-  </Alert>
-        </Snackbar>
+        <Alert
+          onClose={handleClose}
+          severity={snackbarSeverity}
+          sx={{ width: "100%" }}
+        >
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
     </div>
   );
 }
