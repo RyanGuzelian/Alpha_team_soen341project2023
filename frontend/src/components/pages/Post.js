@@ -20,6 +20,7 @@ function Post() {
         title:"",
         description:"",
         location:"",
+        company:user["_id"]
     })
 
     const [postable, setPostable] = useState(false);

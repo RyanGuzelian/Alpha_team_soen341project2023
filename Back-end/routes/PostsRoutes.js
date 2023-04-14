@@ -18,4 +18,8 @@ router_Post
     .route('/postJob')
     .post(postController.createPost)
 
+router_Post
+    .route("/apply")
+    .post(postController.applyToPost);
+
 module.exports = router_Post

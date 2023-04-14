@@ -157,9 +157,10 @@ exports.createPost = async (req, res) =>{          // Method for creating a new 
     const mynewPost=req.body
     const mysize=(await Post.collection.stats()).size.toString()
     mynewPost._id=mynewPost.title+"-"+mysize
+    mynewPost.company = req.body.company;
     try{
         const newPost = await Post.create(mynewPost)    
-
+        
 
         res.status(200).json({
             status:'success',
@@ -262,3 +263,25 @@ exports.updatePost = async (req, res) => {                 //Method for updating
         })
     }
 }
+
+exports.applyToPost = async (req, res) => {
+    const { userId, postId } = req.body;
+  
+    try {
+      // Add postId to the applied array in the User model
+      await User.findByIdAndUpdate(userId, { $addToSet: { applied: postId } });
+  
+      // Add userId to the candidates array in the Post model
+      await Post.findByIdAndUpdate(postId, { $addToSet: { candidates: userId } });
+  
+      res.status(200).json({
+        status: "success",
+        message: "Successfully applied to the post",
+      });
+    } catch (err) {
+      res.status(400).json({
+        status: "failed",
+        message: err.message,
+      });
+    }
+  };
