@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import EditProfile from "./EditProfile";
 import {Button, Typography} from "@mui/material"
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import UserContext from "../../UserContext";
 
 const Profile = () => {
 
+  const {user, setUser} = useContext(UserContext)
+  const handleLogout = () => {
+    setUser(null);
+    localStorage.removeItem("user");
+  };
   return (
     <div>
       
@@ -22,7 +28,7 @@ const Profile = () => {
 
      <Button href="/editprofile">edit</Button>
      
-           
+     <Button variant="contained" onClick={handleLogout}>Log Out</Button>
     
     </div>
 )

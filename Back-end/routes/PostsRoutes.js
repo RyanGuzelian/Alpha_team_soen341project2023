@@ -33,5 +33,14 @@ router_Post
 router_Post
     .patch('/Posts/:postId/selectCandidate/:userId', postController.addSelectedCandidate);
 
+router_Post
+    .get('/getPost/:id', postController.getMyPost);
+
+router_Post
+    .delete('/deletePost/:id', postController.deletePost);
+
+router_Post
+    .get('/:postId/selectedCandidates', postController.getSelectedCandidates);
+
 
 module.exports = router_Post

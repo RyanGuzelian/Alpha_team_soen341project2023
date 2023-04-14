@@ -8,6 +8,25 @@ const PostDetails = () => {
   const [candidates, setCandidates] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+const [selectedCandidates, setSelectedCandidates] = useState([]);
+
+useEffect(() => {
+  const fetchSelectedCandidates = async () => {
+    try {
+      const response = await fetch(`http://localhost:9000/Posts/${postId}/selectedCandidates`);
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      const data = await response.json();
+      setSelectedCandidates(data.data.selectedCandidates);
+    } catch (err) {
+      console.error('Error fetching selected candidates:', err);
+    }
+  };
+
+  fetchSelectedCandidates();
+}, [postId]);
+
 
   const handleSelectForInterview = async (candidateId) => {
     try {
@@ -21,6 +40,19 @@ const PostDetails = () => {
       setCandidates(candidates.filter((candidate) => candidate._id !== candidateId));
     } catch (err) {
       console.error('Error selecting candidate for interview:', err);
+    }
+  };
+
+  const handleDeletePost = async () => {
+    try {
+      await fetch(`http://localhost:9000/Posts/deletePost/${postId}`, {
+        method: 'DELETE',
+      });
+      // Redirect to another page after successful deletion, e.g., the home page
+      // Replace this with the desired path
+      window.location.href = '/';
+    } catch (err) {
+      console.error('Error deleting post:', err);
     }
   };
 
@@ -69,18 +101,34 @@ const PostDetails = () => {
     <div>
       {loading && <div>Loading...</div>}
       {error && <div>{`Error fetching data: ${error}`}</div>}
+      <Button variant="contained" color="error" onClick={handleDeletePost}>
+        Delete Post
+      </Button>
       <h1>Candidates</h1>
+      
       <List>
         {candidates &&
           candidates.map((candidate, index) => (
             <ListItem key={index}>
               <ListItemText primary={candidate.name} />
-              <Button variant="contained" onClick={() => handleSelectForInterview(candidate._id)}>Select for Interview</Button>
+              <Button variant="contained" onClick={() => handleSelectForInterview(candidate._id)}>
+                Select for Interview
+              </Button>
+            </ListItem>
+          ))}
+          {selectedCandidates &&
+          selectedCandidates.map((candidate, index) => (
+            <ListItem key={index}>
+              <ListItemText primary={candidate.name} />
+              <Button variant="contained" color="warning">
+                Already Selected
+              </Button>
             </ListItem>
           ))}
       </List>
     </div>
   );
+  
 };
 
 export default PostDetails;

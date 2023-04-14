@@ -206,33 +206,37 @@ exports.getMyPost= async (req,res) => {               //Method to get specific P
     }
 }
 
-exports.deletePost = async (req, res) => {            //Method to delete specific post
-    try{
-        //const myremoved=await User.updateMany({applied: req.params.id},)
-        
-        const removeCandidatesfromUsers=await User.updateMany({applied:{     //remove from users list of applied jobs
-            $elemMatch: {
-                id:req.params.id
-            }
-        }},{ $pull:{
-            applied:{id:req.params.id}
-        }})
-        
-        const myPost = await Post.findByIdAndDelete(req.params.id)
-
-        res.status(204).json({
-            status:'success element deleted',
-            data: myPost  
-        })
-
-    }catch(err){
-        res.status(407).json({
-            status:'fail',
-            message: err
-        })
+exports.deletePost = async (req, res) => {
+    try {
+      const postId = req.params.id;
+  
+      // Remove from users' list of applied jobs
+      await User.updateMany(
+        { applied: postId },
+        { $pull: { applied: postId } }
+      );
+  
+      // Remove from users' list of interviews
+      await User.updateMany(
+        { interviews: postId },
+        { $pull: { interviews: postId } }
+      );
+  
+      const myPost = await Post.findByIdAndDelete(postId);
+  
+      res.status(204).json({
+        status: 'success element deleted',
+        data: myPost,
+      });
+    } catch (err) {
+      res.status(407).json({
+        status: 'fail',
+        message: err,
+      });
     }
-}
-
+  };
+  
+  
 exports.updatePost = async (req, res) => {                 //Method for updating the Post info
     try{
         
@@ -335,7 +339,10 @@ exports.applyToPost = async (req, res) => {
     try {
       const post = await Post.findByIdAndUpdate(
         req.params.postId,
-        { $addToSet: { selectedCandidates: req.params.userId } },
+        {
+          $addToSet: { selectedCandidates: req.params.userId },
+          $pull: { candidates: req.params.userId },
+        },
         { new: true, runValidators: true }
       );
       res.status(200).json({
@@ -353,3 +360,31 @@ exports.applyToPost = async (req, res) => {
   };
   
   
+  // In your controllers file (e.g., postController.js)
+  exports.getSelectedCandidates = async (req, res) => {
+    try {
+      const post = await Post.findById(req.params.postId).select('selectedCandidates');
+      if (!post) {
+        return res.status(404).json({
+          status: 'fail',
+          message: 'Post not found',
+        });
+      }
+  
+      const selectedCandidateObjects = await User.find({
+        _id: { $in: post.selectedCandidates },
+      });
+  
+      res.status(200).json({
+        status: 'success',
+        data: {
+          selectedCandidates: selectedCandidateObjects,
+        },
+      });
+    } catch (err) {
+      res.status(400).json({
+        status: 'fail',
+        message: err,
+      });
+    }
+  };

@@ -49,7 +49,7 @@ const CompanyPosts = () => {
                 to={`/postdetails/${post["_id"]}`}
                 variant="contained"
               >
-                View Candidates
+                Manage Post
               </Button>
             </ListItem>
           ))}

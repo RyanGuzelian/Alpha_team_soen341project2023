@@ -14,6 +14,8 @@ import Explore_Jobs from './components/pages/Explore_Jobs';
 import Individual_Post from './components/pages/Individual_Post';
 import ManagePosts from './components/pages/CompanyPosts';
 import PostDetails from './components/pages/PostDetails';
+import Interviews from './components/pages/Interviews';
+
 
 
 
@@ -40,6 +42,7 @@ function App () {
                 <Route path="/post/:postId" element={<Individual_Post/>}/>
                 <Route path="/companyposts/:company" element={<ManagePosts/>}/>
                 <Route path="/postdetails/:postId" element={<PostDetails/>} />
+                <Route path="/interviews" element={<Interviews/>}/>
             </Routes>
             </BrowserRouter>
        </UserContext.Provider>
