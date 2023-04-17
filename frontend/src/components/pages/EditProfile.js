@@ -31,7 +31,7 @@ const EditProfile = () => {
             type="name"
             id="name"
             placeholder="Full Name"
-            style={{ color: textColor }}
+            
           />
 
           <FormLabel htmlFor="num"> Phone Number </FormLabel>
@@ -42,7 +42,7 @@ const EditProfile = () => {
             placeholder="xxx-xxx-xxxx"
             id="number"
             name="number"
-            style={{ color: textColor }}
+            
           />
 
           <FormLabel htmlFor="adrs"> Address </FormLabel>
@@ -53,7 +53,7 @@ const EditProfile = () => {
             placeholder="Please put your current address"
             id="adrs"
             name="adrs"
-            style={{ color: textColor }}
+            
           />
 
           <FormLabel htmlFor="edu"> Education </FormLabel>
@@ -64,7 +64,7 @@ const EditProfile = () => {
             placeholder="Please put your current level of education"
             id="edu"
             name="edu"
-            style={{ color: textColor }}
+            
           />
 
           <Button type="submit"> Submit Changes </Button>

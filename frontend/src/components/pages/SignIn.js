@@ -5,9 +5,11 @@ import {
   TextField,
   Snackbar,
   Alert,
+  Paper
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../../UserContext";
+import {useTheme} from "../theme/ThemeProvider"
 
 
 function SignIn() {
@@ -21,6 +23,9 @@ function SignIn() {
     email: "",
     password: "",
   });
+
+  const { currentTheme } = useTheme();
+  const textColor = currentTheme === 'light' ? 'black' : 'white';
   
 
   const handleChange = (e) => {
@@ -82,6 +87,7 @@ function SignIn() {
     >
       <form className="signin-form" onSubmit={handleSubmit}>
         <FormGroup>
+        <Paper style={{ color : textColor }}>
           <TextField
             required
             id="email"
@@ -90,7 +96,10 @@ function SignIn() {
             name="email"
             onChange={handleChange}
           />
+          </Paper>
           <br />
+
+          <Paper style={{ color : textColor }}>
           <TextField
             required
             id="password"
@@ -100,6 +109,7 @@ function SignIn() {
             name="password"
             onChange={handleChange}
           />
+          </Paper>
           <br />
           <Button type="submit" variant="outlined">
             {" "}

@@ -21,7 +21,7 @@ const ThemeProvider = ({ children }) => {
 
   return (
     <ThemeContext.Provider value={{ currentTheme, toggleTheme }}>
-      <div style={{ background: theme.background, color: theme.color }}>
+      <div style={{ background: theme.background, color: theme.color, minHeight: '100vh' }}>
         {React.Children.map(children, (child) => {
           if (React.isValidElement(child)) {
             return React.cloneElement(child, {
