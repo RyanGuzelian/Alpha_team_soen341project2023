@@ -11,8 +11,9 @@ import {
   TextField,
   FormGroup,
   Button,
+  Paper
 } from "@mui/material";
-import ThemeProvider from "../theme/ThemeProvider";
+import {useTheme} from "../theme/ThemeProvider";
 
 function SignUp() {
   const [inputs, setInputs] = useState({
@@ -33,6 +34,10 @@ function SignUp() {
     // CV: "",
     // applied: [],
   });
+
+  const { currentTheme } = useTheme();
+  const textColor = currentTheme === 'light' ? 'black' : 'white';
+
   const navigate = useNavigate();
   const [postable, setPostable] = useState(false);
   const [open, setOpen] = useState(false);
@@ -97,29 +102,46 @@ function SignUp() {
     <div className="auth-form-container" style={{ paddingTop: "5%" }}>
       <form className="signup-form" onSubmit={handleSubmit}>
         <FormGroup>
-          <FormControl
+
+        
+          <FormControl 
             required
             onChange={handleChange}
             value={inputs.User_type}
           >
-            <FormLabel id="User_type">User Type</FormLabel>
-            <RadioGroup name="User_type">
-              <FormControlLabel
+            
+            <FormLabel   id="User_type">User Type
+            </FormLabel>
+            
+
+            
+            <RadioGroup   name="User_type">
+            
+             <FormControlLabel
                 value="seeker"
                 control={<Radio />}
                 label="Job Seeker"
               />
+              
+              
               <FormControlLabel
                 value="employer"
                 control={<Radio />}
                 label="Employer"
               />
-            </RadioGroup>
-          </FormControl>
+              
+             </RadioGroup>
+            
+           </FormControl>
+           
           <br />
+          
+          
 
           {isEmployer ? (
             <>
+
+              <Paper style={{ color : textColor }}>
               <TextField
                 required
                 id="company"
@@ -129,9 +151,12 @@ function SignUp() {
                 label="Company Name"
               />
               <br />
+              </Paper>
+              
             </>
           ) : (
             <>
+              <Paper style={{ color : textColor }}>
               <TextField
                 required
                 id="name"
@@ -141,7 +166,9 @@ function SignUp() {
                 label="Name"
               />
               <br />
+              </Paper>
 
+              <Paper style={{ color : textColor }}>
               <TextField
                 required
                 id="lastName"
@@ -151,9 +178,10 @@ function SignUp() {
                 label="Last Name"
               />
               <br />
+              </Paper>
             </>
           )}
-
+           <Paper style={{ color : textColor }}>
           <TextField
             required
             id="email"
@@ -163,7 +191,9 @@ function SignUp() {
             label="Email"
           />
           <br />
+          </Paper>
 
+          <Paper style={{ color : textColor }}>
           <TextField
             required
             id="password"
@@ -174,7 +204,9 @@ function SignUp() {
             name="password"
           />
           <br />
-
+          </Paper>
+ 
+          <Paper style={{ color : textColor }}>
           <TextField
             id="phone"
             onChange={handleChange}
@@ -183,6 +215,7 @@ function SignUp() {
             label="Phone Number"
           />
           <br />
+          </Paper>
           {/* <FormControl required name="education" onChange={handleChange} value={inputs.education}>
             <FormLabel id="education">Highest level of education</FormLabel>
             <RadioGroup>

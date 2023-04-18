@@ -1,11 +1,15 @@
 import React, { useContext, useState } from "react";
 import EditProfile from "./EditProfile";
-import { TextField, Button, Container, Typography, Box } from '@mui/material';
+import { TextField, Button, Container, Typography, Box, Paper } from '@mui/material';
 
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import UserContext from "../../UserContext";
+import {useTheme} from "../theme/ThemeProvider"
 
 const Profile = () => {
+
+  const { currentTheme } = useTheme();
+  const textColor = currentTheme === 'light' ? 'black' : 'white';
 
   const {user, setUser} = useContext(UserContext)
   const navigate=useNavigate();
@@ -41,24 +45,30 @@ const Profile = () => {
   };
   return (
     user?
-    <div>
+    <div  >
       
 
       <Container>
       <Typography variant="h4" gutterBottom>
         Update User Information
       </Typography>
-      <form onSubmit={handleSubmit}>
+
+     <form onSubmit={handleSubmit} >
+
+      <Paper style={{ color : textColor }}>
         <Box mb={2}>
-          <TextField
+        <TextField 
             fullWidth
             label="Name"
             name="name"
             value={formData.name}
             onChange={handleChange}
             variant="outlined"
-          />
+           />
         </Box>
+        </Paper>
+        
+        <Paper style={{ color : textColor }}>
         <Box mb={2}>
           <TextField
             fullWidth
@@ -70,6 +80,9 @@ const Profile = () => {
             variant="outlined"
           />
         </Box>
+        </Paper>
+
+        <Paper style={{ color : textColor }}>
         <Box mb={2}>
           <TextField
             fullWidth
@@ -80,6 +93,9 @@ const Profile = () => {
             variant="outlined"
           />
         </Box>
+        </Paper>
+
+        <Paper style={{ color : textColor }}>
         <Box mb={2}>
           <TextField
             fullWidth
@@ -90,10 +106,13 @@ const Profile = () => {
             variant="outlined"
           />
         </Box>
+        </Paper>
+        
         <Button type="submit" variant="contained">
           Update
         </Button>
       </form>
+      
     </Container>
      <Button variant="contained" onClick={handleLogout}>Log Out</Button>
     

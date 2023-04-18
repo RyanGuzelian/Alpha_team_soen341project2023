@@ -1,10 +1,14 @@
-import { TextField, Button } from "@mui/material";
+import { TextField, Button, Paper } from "@mui/material";
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../../UserContext";
+import {useTheme} from "../theme/ThemeProvider"
 
 
 function Post() {
+
+  const { currentTheme } = useTheme();
+  const textColor = currentTheme === 'light' ? 'black' : 'white';
 
     const { user } = useContext(UserContext);
     console.log(user["_id"])
@@ -64,14 +68,21 @@ function Post() {
     return( user["User_type"]==="employer"?
         <>
         <form style = {{paddingTop:"5%"}} className="postForm" onSubmit={handleSubmit}>
+
+        <Paper style={{ color : textColor }}>
             <TextField required id="title" onChange={handleChange} name="title" label="Title"/>
             <br/>
+            </Paper>
 
+            <Paper style={{ color : textColor }}>
             <TextField required multiline rows="20" id="description" onChange={handleChange} name="description" label="Description"/>
             <br/>
+            </Paper>
 
+            <Paper style={{ color : textColor }}>
             <TextField required id="location" onChange={handleChange} name="location" label="Location"/>
             <br/>
+            </Paper>
 
             <Button type="submit" variant="outlined">
             Post
