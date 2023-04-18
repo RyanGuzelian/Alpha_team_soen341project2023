@@ -40,7 +40,7 @@ router_Post
     .delete('/deletePost/:id', postController.deletePost);
 
 router_Post
-    .get('/:postId/selectedCandidates', postController.getSelectedCandidates);
+    .get('  /:postId/selectedCandidates', postController.getSelectedCandidates);
 
 
 module.exports = router_Post

@@ -15,6 +15,7 @@ import ManagePosts from './components/pages/CompanyPosts';
 import PostDetails from './components/pages/PostDetails';
 import Interviews from './components/pages/Interviews';
 import  ThemeProvider  from './components/theme/ThemeProvider';
+import AllApplications from './components/pages/AllApplications';
 
 function App () {
   const [user, setUser] = useState(() => {
@@ -40,6 +41,7 @@ function App () {
                 <Route path="/companyposts/:company" element={<ManagePosts/>}/>
                 <Route path="/postdetails/:postId" element={<PostDetails/>} />
                 <Route path="/interviews" element={<Interviews/>}/>
+                <Route path="/applications" element={<AllApplications/>}/>
             </Routes>
             </BrowserRouter>
             </ThemeProvider>

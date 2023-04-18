@@ -4,12 +4,15 @@ import { useParams } from "react-router-dom";
 import UserContext from "../../UserContext";
 
 const Individual_Job = () => {
-  const { user } = useContext(UserContext)
+  const { user, setUser } = useContext(UserContext);
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [applied, setApplied] = useState(false);
   const { postId } = useParams();
+  const { refetchUser } = useContext(UserContext);
+  const [companyName, setCompanyName] = useState(null);
+
 
   const [open, setOpen] = useState(false);
   
@@ -21,6 +24,14 @@ const Individual_Job = () => {
     userId: user["_id"],
     postId: postId
   })
+
+  async function fetchCompanyName(companyId) {
+    const response = await fetch(`http://localhost:9000/Users/Users/${companyId}`);
+    const companyData = await response.json();
+    return companyData.data.user.company;
+  }
+
+
   const handleClick = async () => {
     try {
       const response = await fetch("http://localhost:9000/Posts/apply", {
@@ -48,6 +59,14 @@ const Individual_Job = () => {
       console.error("Error applying to the post:", error);
       // Handle the error as needed
     }
+
+    await refetchUser();
+
+    // Update user data with the new applied job
+    const updatedUser = { ...user, applied: [...user.applied, postId] };
+
+    // Save the updated user data back to the context and localStorage
+    setUser(updatedUser);
   }
 
   const handleClose = () => {
@@ -55,33 +74,36 @@ const Individual_Job = () => {
   };
   
   useEffect(() => {
-    fetch(`http://localhost:9000/Users/Concordia548/Posts/${postId}`)
-      .then((response) => {
+    async function fetchData() {
+      try {
+        const response = await fetch(`http://localhost:9000/Users/Concordia548/Posts/${postId}`);
         if (!response.ok) {
-          throw new Error(
-            `This is an HTTP error: The status is ${response.status}`
-          );
+          throw new Error(`This is an HTTP error: The status is ${response.status}`);
         }
-        return response.json();
-      })
-      .then((actualData) => {
+        const actualData = await response.json();
+
+        const companyName = await fetchCompanyName(actualData.data.myPost.company);
+        setCompanyName(companyName);
+
         setData(actualData);
         setError(null);
-      })
-      .catch((err) => {
+      } catch (err) {
         setError(err.message);
         setData(null);
-      });
-    //   .finally(() => {
-    //     setLoading(false);
-    //   });
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchData();
   }, []);
+
 
   return (
     <div>
       <Typography>
         <div className="IndvJob2">
-          {/* {loading && <div>A moment please...</div>} */}
+          {loading && <div>A moment please...</div>}
           {error && (
             <div>{`There is a problem fetching the post data - ${error}`}</div>
           )}
@@ -89,7 +111,7 @@ const Individual_Job = () => {
             {data && (
               <li>
                 <h1>Job Title: {data["data"]["myPost"].title}</h1>
-                <h4> Company: {data["data"]["myPost"].company}</h4>
+                <h4> Company: {companyName}</h4>
                 <h4>Job description: {data["data"]["myPost"].description}</h4>
                 <h5>Location: {data["data"]["myPost"].location}</h5>
                 <h5> Date Posted: {data["data"]["myPost"].date_posted}</h5>
@@ -108,8 +130,8 @@ const Individual_Job = () => {
       >
         <Alert onClose={handleClose} severity={snackbarSeverity} sx={{ width: '100%' }}>
             {snackbarMessage}
-  </Alert>
-        </Snackbar>
+        </Alert>
+      </Snackbar>
     </div>
   );
 };

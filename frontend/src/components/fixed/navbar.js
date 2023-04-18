@@ -55,6 +55,11 @@ function Navbar() {
                   {user["interviews"].length} interviews
                 </CustomLink>
               </li>
+              <li>
+                <CustomLink href="/applications">
+                  Applications
+                </CustomLink>
+              </li>
             </>
           ) : (
             <>
