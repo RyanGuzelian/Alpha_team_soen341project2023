@@ -20,8 +20,6 @@ HirED is designed to be an interactice and user-friendly platform. One of its ma
 - **Front-End Developer**: Mansi Gairola, GitHub: MANSI288 | **Strengths**: Previous front-end development experience 
 - **Front-End Developer**: Ruawei Lin, GitHub: RoyLin0710 | **Strengths**: Previous front-end development experience 
 - **Back-End Developer**: Cristian Garcia, GitHub: Kafzu | **Strengths**: Database scripting
-- **Full-Stack Developer**: Grecia Olano O'Brien, GitHub: golbr | **Strengths**: UI/UX knowledge, system analysis & design, skills, previous experience with web technologies 
-- **Stakeholders**: TBD
 
 ## Project Approach
 The team will adopt an agile methodologies to work quickly and collaboratively within the timeframe and budget of the project. Scrum is our team's agile methodology of choice. 
