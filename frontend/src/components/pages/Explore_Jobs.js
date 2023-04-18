@@ -141,7 +141,8 @@ export default function Explore_Jobs() {
                         {user["User_type"] === "admin" ? (
                           <>
                             <Button
-                              variant="error"
+                              variant="contained"
+                              color="error"
                               onClick={() => deleteJob(_id)}
                             >
                               {" "}
